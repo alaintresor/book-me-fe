@@ -1,45 +1,81 @@
 import React from "react";
 import styled from "styled-components";
 // Components
+import { Link } from "react-router-dom";
 import FullButton from "../Buttons/FullButton";
 // Assets
-import HeaderImage from "../../assets/img/book.jpg";
+import HeaderImage from "../../assets/img/2000.jpg";
 import QuotesIcon from "../../assets/svg/Quotes";
 import Dots from "../../assets/svg/Dots";
 
 export default function Header() {
   return (
-    <Wrapper id="home" className="container flexSpaceCenter">
-      <LeftSide className="flexCenter">
-        <div>
-          <h1 className="extraBold font60">Book Hotel in minute.</h1>
-          <HeaderP className="font13 semiBold">
-          We look forward to welcoming you and hope you’ll have a pleasant stay in Rwanda.
-          </HeaderP>
-          <BtnWrapper>
-            <FullButton title="Get Started" />
-          </BtnWrapper>
-        </div>
-      </LeftSide>
-      <RightSide>
-        <ImageWrapper>
-          <Img className="radius8" src={HeaderImage} alt="office" style={{zIndex: 9}} />
-       
-          <DotsWrapper>
-            <Dots />
-          </DotsWrapper>
-        </ImageWrapper>
-        <GreyDiv className="lightBg"></GreyDiv>
-      </RightSide>
+    <>
+    <Wrapper  className="" style={{  }}>
+  
+    <div className='container-fluid'>
+                <div className='header row' style={{ background: `url('${HeaderImage}')`, backgroundSize: "cover", backgroundRepeat: "no-repeat",width:"100%" }}>
+
+                  <FormHome>
+                    <div className="form-container">
+                      <div className="form-group-header">
+                        <label htmlFor="place">Place</label>
+                        <input className="form-control1" type="text" name="" id="" />
+                      </div>
+                      <div className="form-group-header">
+                        <label htmlFor="place">Arrival</label>
+                        <input className="form-control1" type="date" name="" id="" />
+                      </div>
+                      <div className="form-group-header">
+                        <label htmlFor="place">DEPARTURE</label>
+                        <input className="form-control1" type="date" name="" id="" />
+                      </div>
+                      <div className="form-group-header">
+                        <label htmlFor="place">Room</label>
+                        <input className="form-control1" type="number" name="" id="" />
+                      </div>
+                      <div className="form-group-header">
+                        <label htmlFor="place">Adult</label>
+                        <input className="form-control1" type="number" name="" id="" />
+                      </div>
+                      <div className="form-group-header">
+                        <label htmlFor="place">Child</label>
+                        <input className="form-control1" type="number" name="" id="" />
+                      </div>
+                      <div className="form-group-header">
+    
+                        <input className="btn" type="submit"  name="" id="" />
+                      </div>
+                    </div>
+                  </FormHome>
+                </div>
+            </div>
     </Wrapper>
+  
+    </>
   );
 }
 
+const FormHome = styled.section`
+  padding: 60px;
+  position: absolute;
+
+  z-index: 9;
+  opacity: 0.8;
+  background:#990f0f80;
+  z-index:9px;
+  width: 75%;
+  border-radius:15px;
+  margin-top:20vh;
+  @media (max-width: 960px) {
+    flex-direction: column;
+  }
+`;
 
 const Wrapper = styled.section`
   padding-top: 80px;
   width: 100%;
-  min-height: 840px;
+  min-height: 400px;
   @media (max-width: 960px) {
     flex-direction: column;
   }

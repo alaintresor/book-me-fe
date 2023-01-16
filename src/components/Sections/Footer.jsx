@@ -12,7 +12,7 @@ export default function Contact() {
 
   return (
     <Wrapper>
-      <div className="darkBg">
+      <div className="darkBg" style={{background:"#990f0f80"}}>
         <div className="container">
           <InnerWrapper className="flexSpaceCenter" style={{ padding: "30px 0" }}>
             <Link className="flexCenter animate pointer" to="home" smooth={true} offset={-80}>

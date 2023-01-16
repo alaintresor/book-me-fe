@@ -12,7 +12,7 @@ export default function Home() {
       <TopNavbar />
       <Header />
       <Popular />
-      <Contact />
+
       <Footer />
     </>
   );
