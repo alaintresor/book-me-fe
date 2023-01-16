@@ -12,45 +12,22 @@ import ProjectImg5 from "../../assets/img/2000.jpg";
 import ProjectImg6 from "../../assets/img/mariot.jpg";
 import AddImage2 from "../../assets/img/add/add2.png";
 import axios from 'axios';
+import { Navigate, useNavigate } from "react-router-dom";
 
 export default function Popular() {
   const [hotels, setHotels] = useState([])
+  const navigate = useNavigate()
 
   useEffect(() => {
     axios
       .get(`http://localhost:4000/api/v1/accomodation`)
       .then((res) => {
-        const { rows } = res.data.data
-        console.log(res.data.data)
-        // const { token } = res.data;
-        // const { user } = res.data.data;
-        // localStorage .setItem('jwt',token);
-        // localStorage.setItem("user", JSON.stringify(user))
-        // dispatch(logginUser(user));
-        // dispatch(
-        //   alertActions.success({ message: `Hey ${user.username}, Welcome to Barefoot Nomad` })
-        // );
-        // setTimeout(() => {
-        //   dispatch(
-        //     alertActions.success({message: null })
-        //     );
-        //     navigate("/");
-
-        // },3000)     
+        const { rows } = res.data.data    
         setHotels(rows)
       })
       .catch((err) => {
-        // dispatch(
-        //   alertActions.error({ message: `${err.response.data.message}` })
-        // );
-        // setTimeout(() => {
-        //   dispatch(
-        //     alertActions.error({ message: null })
-        //   );
-        // }, 15000)
       });
   }, [])
-  console.log(hotels)
 
   return (
     <Wrapper id="projects">
@@ -72,7 +49,7 @@ export default function Popular() {
                   img={hotel.image}
                   title={hotel.name}
                   text={hotel.highlight}
-                  action={() => alert("clicked")}
+                  action={() => navigate('/hotel-detail')}
                 />
               </div>
              ))} 
