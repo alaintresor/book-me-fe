@@ -49,7 +49,7 @@ export default function Popular() {
                   img={hotel.image}
                   title={hotel.name}
                   text={hotel.highlight}
-                  action={() => navigate('/hotel-detail')}
+                  action={() => navigate(`/hotel-detail/${hotel.id}`)}
                 />
               </div>
              ))} 
