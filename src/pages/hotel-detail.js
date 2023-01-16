@@ -3,10 +3,13 @@ import React, { useEffect, useState } from 'react';
 import TopNavbar from '../components/Nav/TopNavbar';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router';
+import Footer from "../components/Sections/Footer"
+
 function HotelDetail() {
     const navigate = useNavigate()
     let { id } = useParams()
     const [hotel, setHotel] = useState({})
+    console.log(id)
 
     useEffect(() => {
         axios
@@ -61,14 +64,12 @@ function HotelDetail() {
 
                             <hr />
                             <div className='items'>
-                                <p>
-                                    <span></span>
-                                    Languages : English, French, Kinyarwanda, Swahili
-                                </p>
-                                <p>
-                                    <span></span>
-                                    Languages : English, French, Kinyarwanda, Swahili
-                                </p>
+                                {hotel.amenitiesList && hotel.amenitiesList.map(item => (
+                                    <p>
+                                        <span></span>
+                                        {item}
+                                    </p>
+                                ))}
 
                             </div>
                         </div>
@@ -121,6 +122,7 @@ function HotelDetail() {
                     </div>
                 </div>
             </div>
+            <Footer />
         </>
     );
 }
