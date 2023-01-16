@@ -14,8 +14,7 @@ export default function Header() {
         <div>
           <h1 className="extraBold font60">Book Hotel in minute.</h1>
           <HeaderP className="font13 semiBold">
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-            voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+          We look forward to welcoming you and hope you’ll have a pleasant stay in Rwanda.
           </HeaderP>
           <BtnWrapper>
             <FullButton title="Get Started" />

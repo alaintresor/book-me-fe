@@ -3,12 +3,18 @@ import styled from "styled-components";
 // Components
 import ProjectBox from "../Elements/ProjectBox";
 import FullButton from "../Buttons/FullButton";
-import { Link } from "react-router-dom";
-
+// Assets
+import ProjectImg1 from "../../assets/img/1.jpg";
+import ProjectImg2 from "../../assets/img/kim.jpg";
+import ProjectImg3 from "../../assets/img/mariot.jpg";
+import ProjectImg4 from "../../assets/img/radison.jpg";
+import ProjectImg5 from "../../assets/img/2000.jpg";
+import ProjectImg6 from "../../assets/img/mariot.jpg";
+import AddImage2 from "../../assets/img/add/add2.png";
 import axios from 'axios';
 import { Navigate, useNavigate } from "react-router-dom";
 
-export default function Popular() {
+export default function HotelSection() {
   const [hotels, setHotels] = useState([])
   const navigate = useNavigate()
 
@@ -24,16 +30,13 @@ export default function Popular() {
   }, [])
 
   return (
-    <>
-  
-    <Wrapper id="projects" style={{marginTop:"30px"}}>
-    
+    <Wrapper id="projects">
       <div className="whiteBg">
         <div className="container">
           <HeaderInfo>
-            <h1 className="font40 extraBold">Hotels</h1>
+            <h1 className="font40 extraBold">Popular Hotels</h1>
             <p className="font13">
-               hotels in Rwanda.
+              recommended hotels in Rwanda.
 
             </p>
           </HeaderInfo>
@@ -93,21 +96,11 @@ export default function Popular() {
               />
             </div> */}
           </div>
-          <div className="row flexCenter">
-            <div style={{ margin: "50px 0", width: "200px" }}>
-             <Link to='hotels'><FullButton title="See More" /></Link> 
-            </div>
-          </div>
+    
         </div>
       </div>
 
     </Wrapper>
-    <br></br>
-    <br></br>
-    <br></br>
-    <br></br>
-    <br></br>
-    </>
   );
 }
 

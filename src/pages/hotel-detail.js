@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import TopNavbar from '../components/Nav/TopNavbar';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router';
+import Footer from "../components/Sections/Footer"
+
 function HotelDetail() {
     const navigate = useNavigate()
     let { id } = useParams()
@@ -108,7 +110,7 @@ function HotelDetail() {
                                                 {room.roomCost}
                                             </td>
                                             <td>
-                                                <button onClick={() => navigate(`/checkout/${room.roomType}/${hotel.id}`)}>Book</button>
+                                                <button onClick={()=>navigate(`/checkout/${room.roomType}/${hotel.id}`)}>Book</button>
                                             </td>
                                         </tr>
                                     ))}
@@ -119,6 +121,7 @@ function HotelDetail() {
                     </div>
                 </div>
             </div>
+            <Footer />
         </>
     );
 }
