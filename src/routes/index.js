@@ -10,8 +10,8 @@ const routes = () => {
         <Routes>
             <Route exact path="/" element={<Home />} />
             <Route exact path="/about" element={<About />} />
-            <Route exact path="/checkout" element={<Checkout />} />
-            <Route exact path="/hotel-detail" element={<HotelDetail />} />
+            <Route exact path="/checkout/:roomType/:hotelId" element={<Checkout />} />
+            <Route exact path="/hotel-detail/:id" element={<HotelDetail />} />
         </Routes>
     );
 }

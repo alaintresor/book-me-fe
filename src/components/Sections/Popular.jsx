@@ -20,7 +20,7 @@ export default function Popular() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/api/v1/accomodation`)
+      .get(`https://bookme.up.railway.app/api/v1/accomodation`)
       .then((res) => {
         const { rows } = res.data.data    
         setHotels(rows)
@@ -49,7 +49,7 @@ export default function Popular() {
                   img={hotel.image}
                   title={hotel.name}
                   text={hotel.highlight}
-                  action={() => navigate('/hotel-detail')}
+                  action={() => navigate(`/hotel-detail/${hotel.id}`)}
                 />
               </div>
              ))} 
