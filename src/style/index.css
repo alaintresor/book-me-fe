@@ -269,3 +269,21 @@
   .whiteBg {
     background-color: #fff;
   }
+body{
+  width: 100vw;
+  padding: 0;
+  margin: 0;
+}
+
+  .header{
+    background:url("https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png");
+    height: 40vh;
+    /* width: 100% !important; */
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    
+  }

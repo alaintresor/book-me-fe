@@ -6,8 +6,9 @@ function HotelDetail() {
     return (
         <>
             <TopNavbar />
-            <div className='container'>
-                <div className='header'>
+            <div className='container-fluid'>
+                <div className='header row'>
+                    
                     <h3>
                     MARRIOTT HOTEL KIGALI
                     </h3>
