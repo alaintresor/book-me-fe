@@ -1,31 +1,61 @@
 import React from 'react';
 import TopNavbar from '../components/Nav/TopNavbar';
 function CheckOut() {
+
+    const hideSecond=()=>{
+        document.getElementById('first').style.display="none"
+        document.getElementById('second').style.display="block"
+        document.getElementById('third').style.display="none"
+        console.log("hello")
+    }
+
+    const hideFirst=()=>{
+        document.getElementById('first').style.display="block"
+        document.getElementById('second').style.display="none"
+        document.getElementById('third').style.display="none"
+        console.log("hello")
+    }
+    const hideThird=()=>{
+        document.getElementById('first').style.display="none"
+        document.getElementById('second').style.display="none"
+        document.getElementById('third').style.display="block"
+        console.log("hello")
+    }
+
     return (
         <>
-   
-           <div>
+   <TopNavbar />
+   <br></br>
+   <br></br>
+   <br></br>
+   <br></br>
+   <br></br>
+           <div >
             <div className='stepper'>
               <div className='step-one'>
-                <div className='step-number'>
+                <div onClick={hideFirst} className='step-number'>
                     <p>1</p>
                 </div>
                 <p>Personal Information</p>
               </div>
               <div className='step-one'>
-              <div className='step-number'>  <p>2</p></div>
+              <div onClick={hideSecond} className='step-number'>  <p>2</p></div>
               <p>Contacts Information</p>
          
               </div>
               <div className='step-one'>
-              <div className='step-number'>  <p>3</p></div>
+              <div className='step-number' onClick={hideThird}>  <p>3</p></div>
               <p>Final</p>
 
               </div>
             </div>
             <hr></hr>
-            <div className='form-first'>
+            <div style={{marginLeft:"100px"}}>
+            <div id='first' className='form-first'>
+            <br></br>
                 <p><h3>Enter Details</h3></p>
+                <br></br>
+             
                  <form>
                    <div className='form'>
                    <div className='form-names'>
@@ -68,7 +98,7 @@ function CheckOut() {
                    </div>
                  </form>
             </div>
-            <div className='form-first'>
+            <div id='second' className='form-second' style={{display:"none"}}>
                 <p><h3>Enter Contact Information</h3></p>
                  <form>
                    <div className='form'>
@@ -96,7 +126,7 @@ function CheckOut() {
                  </form>
             </div>
 
-            <div className='form-first'>
+            <div id='third' className='form-first' style={{display:"none"}}>
                 <p><h3>How Do You Want To Pay.</h3></p>
                  <form>
                    <div className='form'>
@@ -122,6 +152,7 @@ function CheckOut() {
                    </div>
                  </form>
             </div>
+           </div>
            </div>
         </>
     );
