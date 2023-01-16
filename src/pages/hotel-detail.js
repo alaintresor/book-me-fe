@@ -2,11 +2,15 @@
 import React, { useEffect, useState } from 'react';
 import TopNavbar from '../components/Nav/TopNavbar';
 import axios from 'axios';
+import { useNavigate, useParams } from 'react-router';
 function HotelDetail() {
+    const navigate = useNavigate()
+    let { id } = useParams()
     const [hotel, setHotel] = useState({})
+
     useEffect(() => {
         axios
-            .get(`http://localhost:4000/api/v1/accomodation/1`)
+            .get(`https://bookme.up.railway.app/api/v1/accomodation/${id}`)
             .then((res) => {
                 const { accomodation } = res.data.data
                 setHotel(accomodation)
@@ -18,7 +22,7 @@ function HotelDetail() {
         <>
             <TopNavbar />
             <div className='container-fluid'>
-                <div className='header row' style={{background:`url('${hotel.image}')`, backgroundRepeat: "no-repeat",backgroundSize:"cover"}}>
+                <div className='header row' style={{ background: `url('${hotel.image}')`, backgroundSize: "cover", backgroundRepeat: "no-repeat" }}>
 
                     <h1>
                         {hotel.name}
@@ -89,7 +93,7 @@ function HotelDetail() {
                                     </th>
                                 </thead>
                                 <tbody>
-                                    {hotel.rooms &&hotel.rooms.map(room => (
+                                    {hotel.rooms && hotel.rooms.map(room => (
 
 
                                         <tr>
@@ -106,7 +110,7 @@ function HotelDetail() {
                                                 {room.roomCost}
                                             </td>
                                             <td>
-                                                <button>Book</button>
+                                                <button onClick={()=>navigate(`/checkout/${room.roomType}/${hotel.id}`)}>Book</button>
                                             </td>
                                         </tr>
                                     ))}
