@@ -10,7 +10,7 @@ function CheckOut() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/api/v1/accomodation/${hotelId}`)
+      .get(`https://bookme.up.railway.app/api/v1/accomodation/${hotelId}`)
       .then((res) => {
         const { accomodation } = res.data.data
         setHotel(accomodation)
