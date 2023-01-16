@@ -1,13 +1,1001 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+* {
+  padding: 0px;
+  margin: 0px; }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+body {
+  font-family: "Montserrat";
+  margin: 0;
+  padding: 0;
+  background-color: #FFF;
+  margin: 0;
+  padding: 0; }
+  body .row-home {
+    display: flex;
+    justify-content: space-around;
+    height: 20vh;
+    align-items: center; }
+  body .button-disable {
+    background: #A5A5A5 !important;
+    cursor: not-allowed !important; }
+    body .button-disable input {
+      cursor: not-allowed !important; }
+  body .container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-direction: column; }
+    body .container h1 {
+      color: #046CC6; }
+  body .navbar {
+    background: #FFF;
+    box-shadow: none;
+    padding-top: 10px;
+    padding-bottom: 40px; }
+  body .notification-icon {
+    color: #000; }
+  body .menu-icon {
+    color: #000; }
+  body .navlink {
+    text-decoration: none;
+    color: #000;
+    text-transform: none;
+    font-size: 0.750rem;
+    font-weight: 600; }
+  body .active {
+    color: #046CC6; }
+  body .active::before {
+    content: '';
+    height: 5px;
+    width: 5px;
+    background: #046CC6;
+    position: absolute;
+    border-radius: 50%;
+    left: 45%;
+    top: 90%; }
+  body .book-container {
+    min-height: 100vh; }
+    body .book-container .button {
+      text-transform: none; }
+    body .book-container .book-grid {
+      border-radius: 0;
+      padding: 20px; }
+    body .book-container .select-input, body .book-container #outlined-number {
+      font-size: 0.8rem;
+      top: -2px; }
+    body .book-container #demo-simple-select, body .book-container #outlined-number {
+      padding: 10px; }
+  body .reg-area {
+    min-height: 100vh;
+    display: flex; }
+    body .reg-area .slice-a {
+      display: flex;
+      flex: 1;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      background: #046CC6;
+      padding: 20px; }
+      body .reg-area .slice-a img {
+        width: 100%; }
+      body .reg-area .slice-a .welcome-text {
+        text-align: center;
+        color: #FFF; }
+        body .reg-area .slice-a .welcome-text p {
+          font-size: 13px; }
+    body .reg-area .slice-b {
+      flex: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px; }
+      body .reg-area .slice-b .logo {
+        padding: 20px 0; }
+      body .reg-area .slice-b .no-account {
+        color: #A5A5A5; }
+        body .reg-area .slice-b .no-account .signup-btn {
+          color: #046CC6;
+          font-weight: bold;
+          cursor: pointer;
+          text-decoration: none; }
+      body .reg-area .slice-b .form-content {
+        justify-content: center;
+        margin: auto 0; }
+        body .reg-area .slice-b .form-content .input-group {
+          height: 25px;
+          border: 1px solid #A5A5A5;
+          margin: 25px 0 0 0;
+          width: 400px;
+          border-radius: 5px;
+          padding: 12px;
+          cursor: pointer;
+          display: flex; }
+          body .reg-area .slice-b .form-content .input-group ion-icon {
+            margin: auto 0 auto auto;
+            color: #A5A5A5; }
+          body .reg-area .slice-b .form-content .input-group input, body .reg-area .slice-b .form-content .input-group select {
+            width: 100%;
+            border: none !important;
+            padding: 0;
+            outline: none; }
+          body .reg-area .slice-b .form-content .input-group input:focus {
+            outline: none; }
+        body .reg-area .slice-b .form-content .button {
+          background: #046CC6;
+          border: none !important; }
+          body .reg-area .slice-b .form-content .button input {
+            cursor: pointer;
+            background: none;
+            color: #FFF; }
+        body .reg-area .slice-b .form-content h2 {
+          font-size: 20px;
+          text-align: center; }
+        body .reg-area .slice-b .form-content .form-group .input-group, body .reg-area .slice-b .form-content .form-group select {
+          height: 35px;
+          border: 1px solid #A5A5A5;
+          width: 400px;
+          border-radius: 5px;
+          padding: 5px;
+          cursor: pointer; }
+          body .reg-area .slice-b .form-content .form-group .input-group ion-icon, body .reg-area .slice-b .form-content .form-group select ion-icon {
+            margin: auto 0 auto auto;
+            color: #A5A5A5; }
+        body .reg-area .slice-b .form-content .form-group .errorBoredr {
+          border: 1px solid #FF3D00; }
+        body .reg-area .slice-b .form-content .form-group .error {
+          color: #FF3D00;
+          font-size: 14px;
+          margin: auto 0;
+          position: absolute; }
+        body .reg-area .slice-b .form-content form {
+          padding: 10px 0; }
+          body .reg-area .slice-b .form-content form .input-group {
+            display: flex; }
+            body .reg-area .slice-b .form-content form .input-group input {
+              width: 100%;
+              border: none;
+              padding: 0; }
+            body .reg-area .slice-b .form-content form .input-group input:focus {
+              outline: none; }
+          body .reg-area .slice-b .form-content form .forgot-p {
+            font-size: 10px;
+            text-align: end;
+            cursor: pointer;
+            padding-bottom: 5px;
+            color: #046CC6; }
+        body .reg-area .slice-b .form-content .social-m {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-decoration: none; }
+          body .reg-area .slice-b .form-content .social-m p {
+            font-size: 12px;
+            padding: 0 5px;
+            color: #A5A5A5; }
+          body .reg-area .slice-b .form-content .social-m img {
+            width: 25px; }
+  body .input-align {
+    display: flex; }
+  body .input-resize {
+    width: 300px !important; }
+  body .input-left {
+    margin-left: 20px; }
+  @media (max-width: 750px) {
+    body .reg-area .slice-a {
+      display: none !important; } }
+  @media (max-width: 970px) {
+    body .reg-area .slice-a-signup {
+      display: none !important; } }
+  @media (max-width: 650px) {
+    body .reg-area .input-align {
+      display: block !important; }
+    body .reg-area .input-left {
+      margin-left: 0 !important; } }
+  body .contents-container {
+    display: flex;
+    height: 90vh;
+    width: 100%;
+    overflow-y: scroll; }
+    body .contents-container .sidebar {
+      background-color: #FFF;
+      width: 250px;
+      margin-right: 10px;
+      color: #000; }
+    body .contents-container .contents {
+      width: 100%; }
+  body .sidebar-contents {
+    display: flex;
+    flex-direction: column; }
+    body .sidebar-contents div {
+      margin: 10px 5px;
+      padding: 10px 15px;
+      font-size: 15px;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer; }
+      body .sidebar-contents div span:nth-child(2) {
+        margin-left: 10px; }
+      body .sidebar-contents div:hover {
+        background-color: #046CC6;
+        color: #FFF; }
+  body .footer-content {
+    display: flex;
+    background-color: #000;
+    color: #FFF;
+    position: relative;
+    bottom: 0;
+    margin-top: 25px;
+    width: 100vw;
+    justify-content: center; }
+    body .footer-content div {
+      flex: 1;
+      margin: 0px 50px;
+      padding: 20px 0px;
+      display: flex;
+      flex-direction: column; }
+    body .footer-content .footer-menu .title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 10px 0;
+      color: #046CC6; }
+    body .footer-content .footer-menu span {
+      margin-bottom: 10px; }
+      body .footer-content .footer-menu span a {
+        text-decoration: none;
+        color: #FFF; }
+  @media (max-width: 768px) {
+    body .dashboard-container {
+      width: 100%;
+      overflow: hidden; } }
+  @media (max-width: 768px) {
+    body .sidebar-contents {
+      width: auto; }
+      body .sidebar-contents div span:last-child {
+        display: none; } }
+  @media (max-width: 768px) {
+    body .contents-container {
+      width: 100%;
+      margin: 0px auto; } }
+  @media (max-width: 768px) {
+    body .users .user-container {
+      margin-left: 8px;
+      background-color: #fff; } }
+  body .dashboard-container {
+    min-height: 100vh;
+    width: 100vw;
+    position: relative; }
+    @media (max-width: 768px) {
+      body .dashboard-container {
+        width: auto;
+        height: auto; } }
+  body .popup-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: inherit;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+  body .reset {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+    padding: 0; }
+    body .reset .left {
+      background-color: #046CC6;
+      width: 455px;
+      justify-content: center;
+      align-items: center; }
+      body .reset .left h2 {
+        color: #FFF;
+        align-content: center;
+        text-align: center;
+        margin-top: 3rem;
+        margin-bottom: 3rem; }
+      body .reset .left .left--paragraph {
+        color: #FFF;
+        text-align: center; }
+      body .reset .left img {
+        height: 434px;
+        width: 400px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 2rem;
+        object-fit: fit; }
+      body .reset .left p {
+        margin-bottom: 1rem; }
+    body .reset .right {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-left: auto;
+      margin-right: auto; }
+      body .reset .right h3 {
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+        text-align: center;
+        font-size: 1.3rem;
+        font-family: Inter; }
+      body .reset .right .nomad {
+        color: #046CC6; }
+      body .reset .right .right-paragraph {
+        width: 518px;
+        height: 48px;
+        font-size: 1.2rem;
+        font-family: Inter;
+        margin-bottom: 2.5rem;
+        text-align: center;
+        line-height: 1.3rem;
+        font-weight: 400;
+        padding: 0;
+        margin-right: 0px; }
+      body .reset .right form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 4rem; }
+        body .reset .right form .icon-inside {
+          position: relative; }
+          body .reset .right form .icon-inside ion-icon {
+            position: absolute;
+            right: 0;
+            font-size: 1.2rem;
+            top: 0px;
+            padding: 1.2rem; }
+        body .reset .right form .input {
+          width: 470px;
+          height: 50px;
+          font-size: 1.2em;
+          padding-left: 1rem;
+          border-radius: 0.3125rem;
+          margin-bottom: 1rem; }
+        body .reset .right form .despription {
+          width: 100%;
+          height: 10vh;
+          font-size: 1.2em;
+          padding-left: 1rem;
+          border: 2px; }
+        body .reset .right form .icon-circle {
+          position: absolute;
+          right: 0;
+          top: 10px;
+          color: #30A3F1; }
+        body .reset .right form .errors {
+          margin-top: 1rem;
+          color: #FF3D00;
+          text-align: start; }
+        body .reset .right form .borderError {
+          margin-bottom: 10px;
+          width: 470px;
+          height: 50px;
+          font-size: 1.2em;
+          padding-left: 1rem;
+          border-radius: 0.3125rem;
+          color: #FF3D00;
+          border: 2px solid #FF3D00 !important; }
+        body .reset .right form button {
+          width: 490px;
+          height: 42px;
+          background-color: #046CC6;
+          color: #FFF;
+          font-family: 100% Montserrat;
+          font-style: bold;
+          border-radius: 0.3125rem; }
+      body .reset .right .right--login {
+        text-align: center;
+        margin-bottom: 9rem;
+        font-size: 0.95rem; }
+      body .reset .right .right--footer {
+        text-align: center;
+        margin-bottom: 1.8125rem;
+        font-weight: medium;
+        font-size: 0.9rem; }
+    @media screen and (min-width: 1440px) {
+      body .reset .left {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center; } }
+    @media screen and (min-width: 601px) and (max-width: 1020px) {
+      body .reset .left {
+        width: 16rem;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center; }
+        body .reset .left h2 {
+          margin-top: 1rem; }
+        body .reset .left img {
+          height: 240px;
+          width: 220px; }
+        body .reset .left .left--paragraph {
+          font-size: 0.9rem; }
+      body .reset .right {
+        display: flex;
+        align-items: center;
+        height: 100vh; }
+        body .reset .right .right-paragraph {
+          width: 350px;
+          height: 48px;
+          font-size: 0.8em; }
+        body .reset .right form {
+          margin-bottom: 0.5rem; }
+          body .reset .right form .icon-inside ion-icon {
+            font-size: 1.2rem;
+            padding: 0.8rem; }
+          body .reset .right form .input {
+            width: 300px;
+            height: 40px;
+            font-size: 1rem; }
+          body .reset .right form button {
+            width: 325px;
+            height: 42px; }
+          body .reset .right form .borderError {
+            width: 300px;
+            height: 40px;
+            margin-bottom: 0; }
+          body .reset .right form .errors {
+            align-self: start; }
+        body .reset .right .right--login {
+          margin-bottom: 12rem; } }
+    @media screen and (min-width: 320px) and (max-width: 600px) {
+      body .reset .left {
+        display: none; }
+      body .reset .right h3 {
+        margin-top: 2rem;
+        margin-bottom: 2rem; }
+      body .reset .right .right-paragraph {
+        width: 320px;
+        height: 35px;
+        font-size: 0.7em; }
+      body .reset .right form {
+        align-items: center;
+        margin-bottom: 2rem; }
+        body .reset .right form .icon-inside ion-icon {
+          font-size: 1.1em;
+          top: 0px;
+          padding: 0.7rem; }
+        body .reset .right form .input {
+          font-size: 0.8em;
+          width: 260px;
+          height: 35px; }
+        body .reset .right form .borderError {
+          width: 260px;
+          height: 35px;
+          font-size: 0.8em; }
+        body .reset .right form .errors {
+          align-self: start;
+          font-size: 0.8em; }
+        body .reset .right form button {
+          width: 280px;
+          height: 35px; }
+      body .reset .right .right--login {
+        font-size: 0.8em;
+        margin-bottom: 12rem; } }
+  body .reset--password {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    margin: 0; }
+    body .reset--password .reset--password--left {
+      background-color: #046CC6;
+      width: 455px;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+      body .reset--password .reset--password--left img {
+        height: 500px;
+        width: 250px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        object-fit: fit; }
+    body .reset--password .reset--password--right {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      margin-left: auto;
+      margin-right: auto; }
+      body .reset--password .reset--password--right h3 {
+        margin-top: 5rem;
+        text-align: center;
+        font-size: 1.5rem;
+        font-family: Inter; }
+      body .reset--password .reset--password--right .nomad {
+        color: #046CC6; }
+      body .reset--password .reset--password--right .right--title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        font-family: Inter;
+        font-weight: 800; }
+      body .reset--password .reset--password--right .right--word {
+        margin-bottom: 2rem;
+        font-size: 1.5rem;
+        font-family: Inter;
+        font-weight: 400; }
+      body .reset--password .reset--password--right form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 8rem;
+        margin-left: auto;
+        margin-right: auto; }
+        body .reset--password .reset--password--right form .icon-inside {
+          position: relative; }
+          body .reset--password .reset--password--right form .icon-inside ion-icon {
+            position: absolute;
+            right: 0;
+            font-size: 1rem;
+            top: 0;
+            padding: 1rem; }
+        body .reset--password .reset--password--right form .input {
+          width: 23.5rem;
+          height: 2.5rem;
+          font-size: 1.2em;
+          font-family: Montserrat;
+          font-weight: 400;
+          margin-bottom: 0.5rem;
+          border-radius: 0.3125rem #FFFFFF;
+          padding-left: 1rem; }
+        body .reset--password .reset--password--right form .errors {
+          color: #FF3D00;
+          text-align: start;
+          margin-top: 0; }
+        body .reset--password .reset--password--right form .borderError {
+          margin-bottom: 0.5rem;
+          width: 23.5rem;
+          height: 2.5rem;
+          font-size: 1.2em;
+          padding-left: 1rem;
+          border-radius: 0.3125rem;
+          border: 1px solid #FF3D00 !important; }
+        body .reset--password .reset--password--right form button {
+          width: 24.5rem;
+          height: 3rem;
+          background-color: #046CC6;
+          color: #FFF;
+          font-family: 100% Montserrat;
+          font-weight: 700;
+          font-style: bold;
+          margin-top: 1rem;
+          border-radius: 0.3125rem; }
+      body .reset--password .reset--password--right p {
+        text-align: center; }
+    @media screen and (min-width: 1440px) {
+      body .reset--password .reset--password--right {
+        justify-content: center;
+        align-items: center; }
+        body .reset--password .reset--password--right form {
+          margin-bottom: 30rem; } }
+    @media screen and (min-width: 601px) and (max-width: 1020px) {
+      body .reset--password .reset--password--left {
+        width: 16rem;
+        height: 100vh;
+        display: flex; }
+        body .reset--password .reset--password--left img {
+          height: 400px;
+          width: 220px; }
+      body .reset--password .reset--password--right h3 {
+        margin-top: 2rem;
+        margin-bottom: 0; }
+      body .reset--password .reset--password--right .right--word {
+        font-size: 1.2rem;
+        margin-bottom: 0.8rem; }
+      body .reset--password .reset--password--right form {
+        margin-bottom: 12rem; }
+        body .reset--password .reset--password--right form .input {
+          width: 18rem;
+          height: 2.5rem;
+          margin-bottom: 1rem; }
+        body .reset--password .reset--password--right form button {
+          width: 19.5rem;
+          height: 3rem;
+          margin-top: 1rem; }
+        body .reset--password .reset--password--right form .borderError {
+          width: 18rem;
+          height: 2.5rem; }
+        body .reset--password .reset--password--right form .errors {
+          align-self: start;
+          margin-top: 0; } }
+    @media screen and (min-width: 320px) and (max-width: 600px) {
+      body .reset--password .reset--password--left {
+        display: none; }
+      body .reset--password .reset--password--right h3 {
+        font-size: 1.2rem;
+        margin-top: 3rem;
+        margin-bottom: 0; }
+      body .reset--password .reset--password--right .right--title {
+        font-size: 1.1rem; }
+      body .reset--password .reset--password--right .right--word {
+        margin-bottom: 2rem;
+        font-size: 1rem; }
+      body .reset--password .reset--password--right form {
+        align-items: center;
+        margin-bottom: 15rem; }
+        body .reset--password .reset--password--right form .icon-inside ion-icon {
+          font-size: 1rem;
+          padding: 0.8rem; }
+        body .reset--password .reset--password--right form .input {
+          width: 250px;
+          height: 35px;
+          font-size: 1em;
+          padding-left: 0.5rem;
+          margin-bottom: 0.2rem; }
+        body .reset--password .reset--password--right form button {
+          width: 270px;
+          height: 35px;
+          margin-top: 0.2rem; }
+        body .reset--password .reset--password--right form .borderError {
+          width: 250px;
+          height: 35px;
+          font-size: 1rem; }
+        body .reset--password .reset--password--right form .errors {
+          align-self: start;
+          font-size: 1rem;
+          margin-top: 0; } }
+  body .create-request {
+    min-height: 100vh;
+    display: flex; }
+    body .create-request .error {
+      color: #FF3D00; }
+    body .create-request .errorBorder {
+      border: 2px solid #FF3D00; }
+    body .create-request p {
+      padding: 24px; }
+    body .create-request .center-p {
+      color: gray; }
+    body .create-request .side-a {
+      display: flex;
+      flex: 1;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      background: #046CC6;
+      padding: 20px; }
+      body .create-request .side-a img {
+        width: 100%; }
+      body .create-request .side-a .welcome-text {
+        text-align: center;
+        color: #FFF; }
+        body .create-request .side-a .welcome-text p {
+          font-size: 13px; }
+    body .create-request .slice-b {
+      flex: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px;
+      text-align: center; }
+      body .create-request .slice-b .form-content {
+        width: 100% !important;
+        justify-content: center;
+        margin: auto 0; }
+        body .create-request .slice-b .form-content .input-group {
+          height: 25px;
+          border: 1px solid #A5A5A5;
+          margin: 25px 0 0 0;
+          width: 400px;
+          border-radius: 5px;
+          padding: 12px;
+          cursor: pointer;
+          display: flex; }
+          body .create-request .slice-b .form-content .input-group ion-icon {
+            margin: auto 0 auto auto;
+            color: #A5A5A5; }
+          body .create-request .slice-b .form-content .input-group input, body .create-request .slice-b .form-content .input-group select {
+            width: 100%;
+            border: none !important;
+            padding: 0;
+            outline: none; }
+          body .create-request .slice-b .form-content .input-group input:focus {
+            outline: none; }
+        body .create-request .slice-b .form-content .button {
+          background: #046CC6;
+          border: none !important; }
+          body .create-request .slice-b .form-content .button input {
+            cursor: pointer;
+            background: none;
+            color: #FFF; }
+        body .create-request .slice-b .form-content .create-form {
+          max-width: 800px;
+          margin: auto;
+          padding: 10px; }
+          body .create-request .slice-b .form-content .create-form .submit-btn {
+            width: 168px;
+            margin-top: 14px;
+            margin-left: auto;
+            text-transform: none; }
+          body .create-request .slice-b .form-content .create-form .create-input {
+            display: flex;
+            gap: 24px;
+            width: 100%;
+            padding: 14px; }
+          body .create-request .slice-b .form-content .create-form .form-input {
+            width: 100%; }
+            body .create-request .slice-b .form-content .create-form .form-input input,
+            body .create-request .slice-b .form-content .create-form .form-input select,
+            body .create-request .slice-b .form-content .create-form .form-input div {
+              width: 100%;
+              height: 100%; }
+              body .create-request .slice-b .form-content .create-form .form-input input button,
+              body .create-request .slice-b .form-content .create-form .form-input select button,
+              body .create-request .slice-b .form-content .create-form .form-input div button {
+                height: 10px;
+                margin-left: auto;
+                text-transform: none; }
+              body .create-request .slice-b .form-content .create-form .form-input input button:hover,
+              body .create-request .slice-b .form-content .create-form .form-input select button:hover,
+              body .create-request .slice-b .form-content .create-form .form-input div button:hover {
+                background: none; }
+            body .create-request .slice-b .form-content .create-form .form-input input,
+            body .create-request .slice-b .form-content .create-form .form-input select,
+            body .create-request .slice-b .form-content .create-form .form-input div:focus {
+              outline: none; }
+  @media (max-width: 750px) {
+    body .create-request .side-a {
+      display: none; }
+    body .create-input {
+      flex-direction: column; }
+      body .create-input input, body .create-input select, body .create-input div {
+        height: 60px; } }
+  @media (max-width: 970px) {
+    body .create-request .side-a {
+      display: none; } }
+  body .about-page {
+    display: flex;
+    flex-flow: row-reverse;
+    margin: auto;
+    padding: 20px 100px; }
+    body .about-page .left {
+      width: 50%;
+      margin: auto; }
+      body .about-page .left .title {
+        color: #046CC6;
+        padding-bottom: 40px; }
+      body .about-page .left p {
+        padding: 10px; }
+    body .about-page .right {
+      width: 50%; }
+      body .about-page .right img {
+        width: 100%; }
+  @media (max-width: 970px) {
+    body .about-page {
+      flex-direction: column;
+      align-items: center;
+      flex-flow: column-reverse;
+      padding: 20px; }
+      body .about-page .left {
+        width: 100%;
+        text-align: center;
+        padding-top: 40px; }
+        body .about-page .left .right {
+          width: 100%; }
+          body .about-page .left .right img {
+            width: 100%; } }
+  body .leaflet-container {
+    display: flex;
+    width: 100%;
+    height: 100vh; }
+  body .Accomodation {
+    height: 130vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column; }
+    body .Accomodation .Accomodation1 {
+      display: flex; }
+      body .Accomodation .Accomodation1 .accomodation-sidebar {
+        margin-left: 1rem; }
+      body .Accomodation .Accomodation1 .accomodation--paragraph {
+        padding-left: 10rem;
+        height: 130vh;
+        width: 100%; }
+        body .Accomodation .Accomodation1 .accomodation--paragraph .accomodation-facility {
+          font-weight: bold;
+          font-size: 1.75rem;
+          margin-bottom: 1rem;
+          margin-right: 3rem; }
+        body .Accomodation .Accomodation1 .accomodation--paragraph form {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-evenly; }
+          body .Accomodation .Accomodation1 .accomodation--paragraph form .form--input {
+            display: flex;
+            row-gap: 10px;
+            column-gap: 20rem; }
+            body .Accomodation .Accomodation1 .accomodation--paragraph form .form--input .accomodation--input {
+              padding: 0.5rem;
+              width: 100%;
+              height: 30px;
+              margin-bottom: 0.5rem;
+              border-radius: 5px;
+              font-size: 1rem;
+              border: 1px solid #000; }
+            body .Accomodation .Accomodation1 .accomodation--paragraph form .form--input .error {
+              color: #FF3D00;
+              margin-top: 0;
+              margin-bottom: 1rem;
+              text-align: start; }
+            body .Accomodation .Accomodation1 .accomodation--paragraph form .form--input .borderColors {
+              width: 100%;
+              height: 30px;
+              padding: 0.5rem;
+              border-radius: 5px;
+              margin-bottom: 0.5rem;
+              border: 1px solid #FF3D00 !important; }
+            body .Accomodation .Accomodation1 .accomodation--paragraph form .form--input .borderArea {
+              width: 100%;
+              height: 60px;
+              padding: 0.5rem;
+              border-radius: 5px;
+              margin-bottom: 0.5rem;
+              border: 1px solid #FF3D00 !important; }
+            body .Accomodation .Accomodation1 .accomodation--paragraph form .form--input .accomodation--area {
+              padding: 0.5rem;
+              width: 100%;
+              height: 60px;
+              margin-bottom: 1rem;
+              font-size: 1rem;
+              border-radius: 5px; }
+            body .Accomodation .Accomodation1 .accomodation--paragraph form .form--input .accomodation--image {
+              margin-top: 1rem;
+              margin-bottom: 1rem; }
+            body .Accomodation .Accomodation1 .accomodation--paragraph form .form--input .accomodation--select {
+              width: 103%;
+              height: 40px;
+              margin-bottom: 1rem;
+              font-size: 1rem;
+              border-radius: 5px;
+              cursor: pointer; }
+          body .Accomodation .Accomodation1 .accomodation--paragraph form .accomodation--btn {
+            width: 90%;
+            height: 40px;
+            background-color: #046CC6;
+            color: #FFF;
+            font-weight: bold;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 1rem 0;
+            align-self: center; }
+    @media screen and (min-width: 601px) and (max-width: 1024px) {
+      body .Accomodation .Accomodation1 .accomodation--paragraph {
+        display: flex;
+        align-items: center;
+        flex-direction: row; }
+        body .Accomodation .Accomodation1 .accomodation--paragraph .accomodation-facility {
+          font-size: 1rem;
+          margin-bottom: 1rem; }
+        body .Accomodation .Accomodation1 .accomodation--paragraph form {
+          width: 100%; }
+          body .Accomodation .Accomodation1 .accomodation--paragraph form .form--input {
+            row-gap: 10px;
+            column-gap: 5rem;
+            flex-direction: column; }
+            body .Accomodation .Accomodation1 .accomodation--paragraph form .form--input .accomodation--input {
+              width: 90%; }
+            body .Accomodation .Accomodation1 .accomodation--paragraph form .form--input .borderColors {
+              width: 90%; }
+            body .Accomodation .Accomodation1 .accomodation--paragraph form .form--input .borderArea {
+              width: 90%; }
+            body .Accomodation .Accomodation1 .accomodation--paragraph form .form--input .error {
+              color: #FF3D00; }
+            body .Accomodation .Accomodation1 .accomodation--paragraph form .form--input .accomodation--area {
+              width: 90%; }
+            body .Accomodation .Accomodation1 .accomodation--paragraph form .form--input .accomodation--image {
+              margin-top: 1rem;
+              margin-bottom: 1rem; }
+            body .Accomodation .Accomodation1 .accomodation--paragraph form .form--input .accomodation--select {
+              width: 90%; }
+          body .Accomodation .Accomodation1 .accomodation--paragraph form .accomodation--btn {
+            width: 90%; } }
+    @media screen and (min-width: 320px) and (max-width: 600px) {
+      body .Accomodation .Accomodation1 .accomodation--paragraph {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column; }
+        body .Accomodation .Accomodation1 .accomodation--paragraph .accomodation-facility {
+          font-size: 1rem;
+          margin-bottom: 1rem; }
+        body .Accomodation .Accomodation1 .accomodation--paragraph form {
+          width: 100%;
+          flex-direction: row; }
+          body .Accomodation .Accomodation1 .accomodation--paragraph form .form--input {
+            row-gap: 10px;
+            column-gap: 5rem; }
+            body .Accomodation .Accomodation1 .accomodation--paragraph form .form--input .accomodation--input {
+              width: 90%; }
+            body .Accomodation .Accomodation1 .accomodation--paragraph form .form--input .borderColors {
+              width: 90%; }
+            body .Accomodation .Accomodation1 .accomodation--paragraph form .form--input .borderArea {
+              width: 90%; }
+            body .Accomodation .Accomodation1 .accomodation--paragraph form .form--input .error {
+              color: #FF3D00; }
+            body .Accomodation .Accomodation1 .accomodation--paragraph form .form--input .accomodation--area {
+              width: 90%; }
+            body .Accomodation .Accomodation1 .accomodation--paragraph form .form--input .accomodation--image {
+              margin-top: 1rem;
+              margin-bottom: 1rem; }
+            body .Accomodation .Accomodation1 .accomodation--paragraph form .form--input .accomodation--select {
+              width: 90%; }
+          body .Accomodation .Accomodation1 .accomodation--paragraph form .accomodation--btn {
+            width: 96%; } }
+  body .popupContainer .content {
+    padding: 20px 20px; }
+    body .popupContainer .content .row {
+      display: flex;
+      text-align: left;
+      margin-bottom: 15px; }
+      body .popupContainer .content .row .title {
+        font-weight: bold;
+        min-width: 11rem; }
+    body .popupContainer .content .buttons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px; }
+      body .popupContainer .content .buttons button {
+        margin-left: 20px;
+        padding: 8px 30px; }
+    body .popupContainer .content .disabled {
+      cursor: not-allowed !important; }
+  @media (max-width: 750px) {
+    body .popupContainer .ItemsContainer {
+      width: 80%; }
+      body .popupContainer .ItemsContainer .row {
+        flex-direction: column; } }
+  @media (max-width: 750px) {
+    body .popupContainer .ItemsContainer {
+      width: 80%; }
+      body .popupContainer .ItemsContainer .row {
+        flex-direction: column; } }
+  body .profileContainer .header {
+    padding: 1rem;
+    color: #046CC6;
+    font-size: 1.5rem;
+    font-weight: bold; }
+  body .profileContainer .modelContainer {
+    padding: 1rem; }
+  body .profileContainer .row {
+    display: flex; }
+    body .profileContainer .row .down {
+      display: none; }
+  body .profileContainer .btn {
+    justify-content: flex-end;
+    padding: 10px; }
+    body .profileContainer .btn Button {
+      height: 2.5rem;
+      margin-left: 5px; }
+  body .profileContainer .data {
+    padding: 0.5rem 2rem; }
+  body .profileContainer .title {
+    font-weight: bold;
+    min-width: 8rem;
+    padding-right: 20px;
+    color: #046CC6 !important; }
+  body .profileContainer .inputs-group {
+    display: flex;
+    margin-top: 2rem; }
+    body .profileContainer .inputs-group Input {
+      width: 18rem;
+      height: 2rem; }
+  @media (max-width: 750px) {
+    body .profileContainer .ItemsContainer {
+      width: 80%; }
+      body .profileContainer .ItemsContainer .row {
+        flex-direction: column;
+        justify-content: space-between; }
+        body .profileContainer .ItemsContainer .row .down {
+          display: block; } }
