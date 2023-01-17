@@ -166,7 +166,7 @@ function CheckOut() {
                 <div className='group-email'>
 
                   <div className='form-group'>
-                    <label>Title</label>
+                    <label>Email</label>
                     <input type="email" value={emailMe} onChange={(e)=>setEmailMe(e.target.value)} placeholder='Enter Your Email' className='form-control' />
 
 
