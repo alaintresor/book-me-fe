@@ -65,7 +65,7 @@ export default function TopNavbar() {
 
             <li className="semiBold font15 pointer">
               <a href="/login" style={{ padding: "10px 30px 10px 0" }}>
-                open Account
+                Open Account
               </a>
             </li>
           

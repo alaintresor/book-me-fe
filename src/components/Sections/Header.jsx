@@ -27,7 +27,7 @@ export default function Header() {
                         <input className="form-control1" type="date" name="" id="" />
                       </div>
                       <div className="form-group-header">
-                        <label htmlFor="place">DEPARTURE</label>
+                        <label htmlFor="place">Departure</label>
                         <input className="form-control1" type="date" name="" id="" />
                       </div>
                       <div className="form-group-header">
@@ -44,7 +44,7 @@ export default function Header() {
                       </div>
                       <div className="form-group-header">
     
-                        <input className="btn" type="submit"  name="" id="" />
+                        <input className="btn" value="Search" type="submit"  name="" id="" />
                       </div>
                     </div>
                   </FormHome>
