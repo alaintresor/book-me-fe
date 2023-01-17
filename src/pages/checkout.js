@@ -218,7 +218,7 @@ function CheckOut() {
                 </p>
 
                 <br></br>
-                <button className='btn-c'>Continue</button>
+                <span onClick={hideSecond} style={{cursor:"pointer"}} className='btn-c' >Continue</span>
               </div>
             </form>
           </div>
@@ -530,7 +530,8 @@ function CheckOut() {
 
                 </div>
                 <br></br>
-                <button className='btn-c'>Continue</button>
+                <span onClick={hideThird} style={{cursor:"pointer"}} className='btn-c' >Continue</span>
+
               </div>
             </form>
           </div>
