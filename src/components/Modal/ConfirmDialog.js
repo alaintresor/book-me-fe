@@ -13,7 +13,7 @@ const ConfirmDialog = ({ title, children, open, setOpen, }) => {
       onClose={() => setOpen(false)}
       aria-labelledby="success-dialog"
     >
-      <DialogTitle id="success-dialog">{title}</DialogTitle>
+      <DialogTitle id="success-dialog" style={{fontWeight:"bold"}}>{title}</DialogTitle>
       <DialogContent>{children}</DialogContent>
       <center>
         <DialogActions>

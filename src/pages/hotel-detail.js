@@ -40,15 +40,15 @@ function HotelDetail() {
                 <div className='row mt-3'>
                     <div className='col-lg-9'>
                         <div className='row'>
-                            <div className='nav-item'>Info & Price</div>
+                            <div className='nav-item'><a href='#info' style={{ textDecoration: "none", color: "white" }}> Info & Price</a></div>
 
-                            <div className='nav-item'>Facilities</div>
+                            <div className='nav-item'> <a href='#facility' style={{ textDecoration: "none", color: "white" }}> Facilities</a></div>
 
                             <div className='nav-item'>House rules</div>
 
                         </div>
                         <img src={hotel.image} />
-                        <div className='content'>
+                        <div className='content' id='info'>
 
                             <h3>
                                 Description
@@ -58,7 +58,7 @@ function HotelDetail() {
                                 {hotel.description}
                             </p>
                         </div>
-                        <div className='facility'>
+                        <div className='facility' id='facility'>
                             <h3>
                                 Hotel Facilities
                             </h3>
@@ -112,7 +112,7 @@ function HotelDetail() {
                                                 {room.roomCost}
                                             </td>
                                             <td>
-                                                <button onClick={()=>navigate(`/checkout/${room.roomType}/${hotel.id}`)}>Book</button>
+                                                <button onClick={() => navigate(`/checkout/${room.roomType}/${hotel.id}`)}>Book</button>
                                             </td>
                                         </tr>
                                     ))}
