@@ -465,7 +465,7 @@
 
  .image-detail-section img {
    margin-top: 1rem;
-   width: 90% !important;
+   width: 100% !important;
  }
 
  .image-detail-section .content h3 {
@@ -477,7 +477,7 @@
    color: #7d7d7d;
    line-height: 23px;
    letter-spacing: 0.25px;
-   width: 90%;
+   width: 100%;
  }
 
  .image-detail-section .facility {
@@ -491,7 +491,7 @@
 
  .nav-item {
    background-color: rgb(1, 1, 61);
-   width: 30%;
+   width: 33.2%;
    color: white;
    height: 3rem;
    display: flex;

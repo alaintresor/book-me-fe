@@ -9,11 +9,10 @@ import Swal from 'sweetalert2'
 import ConfirmDialog from '../components/Modal/ConfirmDialog';
 import Banner from '../components/Sections/Banner';
 
-
 function CheckOut() {
   const Checkout = window.Checkout;
 
-  
+
 
 
   const dispatch = useDispatch()
@@ -40,6 +39,9 @@ function CheckOut() {
   const [purpose, setPurpose] = useState('Personal reason')
   const [open, setOpen] = useState(false)
   const [isSubmit, setIsSubmit] = useState(false)
+  const [fromDate, setFromDate] = useState('')
+  const [toDate, setToDate] = useState('')
+  const [dayNumber, setDayNumber] = useState(1)
 
 
 
@@ -163,11 +165,13 @@ function CheckOut() {
         return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
     });
 }
-const uid =Math.floor(Math.random()*1000000);
-console.log(uid)
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    Swal.getTimerProgressBar({
+     timer:39
+    })
+    const uid =Math.floor(Math.random()*1000000);
 
     setIsSubmit(true)
     const data = {
@@ -188,7 +192,7 @@ console.log(uid)
       arriveDate,
       arriveTime,
       question,
-      dayNumber: 1
+      dayNumber: dayNumber
 
 
     }
@@ -197,10 +201,10 @@ console.log(uid)
         ...data
       })
       .then((res) => {
-
-
+  const amount = roomMain?.room?.roomCost * rooms * dayNumber;
+ console.log(amount)
         var data1 = JSON.stringify({
-          "amount": "10"
+          "amount": `${amount}`
         });
         
         var config = {
@@ -220,7 +224,7 @@ console.log(uid)
               },
               merchant: "8206000697", 
               order: {
-                amount: 1, 
+                amount: `${amount}`, 
                 currency: "USD", 
                 description: `Book ${roomType}`, 
                 id: uid, 
@@ -262,12 +266,31 @@ console.log(uid)
       });
   }
 
+  const getDates = () => {
+    if (toDate != '' && fromDate != '') {
+      const date1 = new Date(`${fromDate}`);
+      const date2 = new Date(`${toDate}`);
+      var diff = date2 - date1; // difference in milliseconds
+      var diffDays = diff / (1000 * 60 * 60 * 24); // convert to number of days
+
+      console.log(diffDays)
+      if (diffDays <= 0) {
+        alert("error")
+        return 0
+      }
+
+      setDayNumber(diffDays)
+      return 0
+    }
+    return 0
+  }
+
   return (
     <>
 
       <TopNavbar />
       <Banner hotel={hotel} />
-      <ConfirmDialog title={"booking confirmation"} children={`Thank you for booking ${hotel.name} with Go Discover Africa, a leading event organizing and tour company in Rwanda. We are pleased to confirm that your reservation has been received and is being processed. Your booking will be confirmed after review within the with in 2 hours.`} open={open} setOpen={setOpen} />
+      <ConfirmDialog title={"booking confirmation"} children={`Thank you for booking ${hotel.name} with Go Discover Africa, a leading event organizing and tour company in Rwanda. We are pleased to confirm that your reservation has been received and is being processed. Your booking will be confirmed after review within the with in 2 hours.\n waiting to pay to get receipt or pay later at hotel.`} open={open} setOpen={setOpen} />
       <br></br>
 
 
@@ -726,6 +749,7 @@ console.log(uid)
                   <button type='submit' className='btn-c' >{isSubmit ? "Loading..." : "Submit"} </button>
                 </div>
               </form>
+             
             </div>
           </div>
 
@@ -747,15 +771,18 @@ console.log(uid)
 
               <div className='form-group'>
                 <label>from</label>
-                <input type="date" value={fname} onChange={(e) => setFname(e.target.value)} placeholder='Enter Your Fisrt Name' required className='form-control' />
+                <input type="date" value={fromDate} onChange={(e) => { setFromDate(e.target.value) }} onBlur={() => getDates()} required className='form-control' />
 
               </div>
               <div className='form-group'>
                 <label>to</label>
-                <input type="date" value={lname} onChange={(e) => setLname(e.target.value)} placeholder='Enter Your Second Name' required className='form-control' />
+                <input type="date" value={toDate} onChange={(e) => { setToDate(e.target.value) }} onBlur={() => getDates()} required className='form-control' />
               </div>
             </div>
           </div>
+          <div className='includesRoom'>
+                <p className='amount'>Amount To Pay {roomMain?.room?.roomCost * rooms * dayNumber}$</p>
+              </div>
           <div className='includesRoom'>
             <div className='facility' id='facility'>
               <h3>
@@ -781,7 +808,6 @@ console.log(uid)
 
 
       </div>
-      <script>alert("give me")</script>
       <br></br>
       <br></br>
       <Footer />

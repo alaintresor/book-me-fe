@@ -90,6 +90,7 @@ p{
     
     display: flex;
     width: 100%;
+    min-height: 75vh !important;
     margin: 50px 0px;
 
 }
@@ -180,6 +181,12 @@ p{
     margin-top: 37px;
     width: 40%;
     /* height: 30vh; */
+}
+.amount{
+    font-size: 20px;
+    padding: 10px;
+    font-weight: bold;
+    color: rgba(153, 15, 15, 0.5);
 }
 label{
     padding: 20px 0px;
