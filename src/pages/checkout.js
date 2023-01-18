@@ -157,7 +157,7 @@ function CheckOut() {
   return (
     <>
       <TopNavbar />
-      <ConfirmDialog title={"Thank you"} children="Your request sent successfull" open={open} setOpen={setOpen} />
+      <ConfirmDialog title={"booking confirmation"} children={`Thank you for booking ${hotel.name} with Go Discover Africa, a leading event organizing and tour company in Rwanda. We are pleased to confirm that your reservation has been received and is being processed. Your booking will be confirmed after review within the next 24 hours.`} open={open} setOpen={setOpen} />
       <div className='container-fluid'>
         <div className='header row' style={{ background: `url('${hotel.image}')`, backgroundSize: "cover", backgroundRepeat: "no-repeat" }}>
 
@@ -212,19 +212,19 @@ function CheckOut() {
                   </div>
                   <div className='form-group'>
                     <label>Fisrt Name</label>
-                    <input type="text" value={fname} onChange={(e) => setFname(e.target.value)} placeholder='Enter Your Fisrt Name' className='form-control' />
+                    <input type="text" value={fname} onChange={(e) => setFname(e.target.value)} placeholder='Enter Your Fisrt Name' required className='form-control' />
 
                   </div>
                   <div className='form-group'>
                     <label>Second Name</label>
-                    <input type="text" value={lname} onChange={(e) => setLname(e.target.value)} placeholder='Enter Your Second Name' className='form-control' />
+                    <input type="text" value={lname} onChange={(e) => setLname(e.target.value)} placeholder='Enter Your Second Name' required className='form-control' />
                   </div>
                 </div>
                 <div className='group-email'>
 
                   <div className='form-group'>
                     <label>Email</label>
-                    <input type="email" value={emailMe} onChange={(e) => setEmailMe(e.target.value)} placeholder='Enter Your Email' className='form-control' />
+                    <input type="email" value={emailMe} onChange={(e) => setEmailMe(e.target.value)} placeholder='Enter Your Email' required className='form-control' />
 
 
 
@@ -275,7 +275,7 @@ function CheckOut() {
                 </p>
 
                 <br></br>
-                <button className='btn-c' type='button' onClick={hideFirst}>Continue</button>
+                <span onClick={hideSecond} style={{cursor:"pointer"}} className='btn-c' >Continue</span>
               </div>
             </form>
           </div>
@@ -567,7 +567,7 @@ function CheckOut() {
                   <div className='form-group'>
                     <label>Select your event</label>
 
-                    <select value={event} onChange={(e) => setEvent(e.target.value)} type="text" className='form-control'>
+                    <select value={event} onChange={(e) => setEvent(e.target.value)} required className='form-control'>
                       <option>
                         Select Event
                       </option>
@@ -590,7 +590,8 @@ function CheckOut() {
 
                 </div>
                 <br></br>
-                <button className='btn-c' type='button'  onClick={hideSecond}>Continue</button>
+                <span onClick={hideThird} style={{cursor:"pointer"}} className='btn-c' >Continue</span>
+
               </div>
             </form>
           </div>
@@ -604,7 +605,7 @@ function CheckOut() {
 
                   <div className='form-group'>
                     <label>Payment Option</label>
-                    <select type="text" placeholder='Enter Your Country' className='form-control' onChange={(e) => setPaymentOption(e.target.value)}>
+                    <select type="text" placeholder='Enter Your Country' className='form-control' onChange={(e) => setPaymentOption(e.target.value)} required>
                       <option selected disabled>Select Option</option>
                       <option>Visa Card</option>
                       <option>Master Card</option>

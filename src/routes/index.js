@@ -15,6 +15,7 @@ const routes = () => {
             <Route exact path="/hotels" element={<Hotels />} />
             <Route exact path="/search" element={<Search />} />
             <Route exact path="/checkout/:roomType/:hotelId" element={<Checkout />} />
+            <Route exact path="/search/:place/:arrival/:departure/:room/:adult/:child" element={<Search />} />
             <Route exact path="/hotel-detail/:id" element={<HotelDetail />} />
         </Routes>
     );
