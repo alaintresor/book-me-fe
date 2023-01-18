@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { alertActions } from "../redux/alertSlice";
 import Swal from 'sweetalert2'
 import ConfirmDialog from '../components/Modal/ConfirmDialog';
+import Banner from '../components/Sections/Banner';
 
 function CheckOut() {
 
@@ -160,17 +161,8 @@ function CheckOut() {
   return (
     <>
       <TopNavbar />
+      <Banner hotel={hotel} />
       <ConfirmDialog title={"booking confirmation"} children={`Thank you for booking ${hotel.name} with Go Discover Africa, a leading event organizing and tour company in Rwanda. We are pleased to confirm that your reservation has been received and is being processed. Your booking will be confirmed after review within the next 24 hours.`} open={open} setOpen={setOpen} />
-      <div className='container-fluid'>
-        <div className='header row' style={{ background: `url('${hotel.image}')`, backgroundSize: "cover", backgroundRepeat: "no-repeat" }}>
-
-          <h1>
-            {hotel.name}
-          </h1>
-          <h3>{hotel.location}</h3>
-          <p className='desc'>{hotel.highlight}</p>
-        </div>
-      </div>
       <br></br>
       <div >
         <div className='stepper'>
