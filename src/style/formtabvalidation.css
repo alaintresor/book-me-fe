@@ -161,6 +161,41 @@ p{
     background-size:cover
 }
 
+.textarea{
+    width: 100px;
+}
+.ask{
+    font-size: 14px;
+    padding: 6px;
+}
+.ClassRoom{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+.form-step{
+    width: 60%;
+}
+.selectRoom{
+    margin-top: 37px;
+    width: 40%;
+    /* height: 30vh; */
+}
+label{
+    padding: 20px 0px;
+}
+.room{
+    display: flex;
+    flex-direction: column;
+}
+.fromDate{
+    display: flex;
+}
+.address{
+    display: flex;
+    flex-direction: column;
+}
+
 
 
 

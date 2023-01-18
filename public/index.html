@@ -24,6 +24,29 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
+    <script
+      src="https://ap-gateway.mastercard.com/checkout/version/61/checkout.js"
+      data-error="errorCallback"
+      data-cancel="cancelCallback"
+      data-complete="completeCallback"
+    ></script>
+    <script>
+        // console.log(Checkout)
+  function errorCallback(error) {
+    console.log(JSON.stringify(error));
+    // Handles callback when a there's an error during a transaction while on the checkout page.
+  }
+  function cancelCallback() {
+    console.log("Payment cancelled");
+    // Handles callback when a client cancels a transaction while on the checkout page.
+  }
+  function completeCallback(resultIndicator,sessionVersion) {
+            console.log(sessionVersion);
+            console.log(resultIndicator);
+            // compaire the resultIndicator to successIndicator value, should be similar for a successful transaction.
+            // you can redirect your client to a success page at this point
+  }
+    </script>
     <title>BookMe</title>
   </head>
   <body>

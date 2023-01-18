@@ -8,6 +8,7 @@ import "./style/flexboxgrid.min.css";
 import './style/index.css';
 import './style/formtabvalidation.css';
 // import './App.scss';
+
 import store from "./redux/store";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

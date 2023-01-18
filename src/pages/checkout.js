@@ -9,11 +9,18 @@ import Swal from 'sweetalert2'
 import ConfirmDialog from '../components/Modal/ConfirmDialog';
 
 function CheckOut() {
+  const Checkout = window.Checkout;
+
+
+
+
 
   const dispatch = useDispatch()
 
   let { roomType, hotelId } = useParams()
   const [title, setTitle] = useState('')
+  const [roomMain, setRoomMain] = useState({})
+  const [rooms, setRoom] = useState('1')
   const [fname, setFname] = useState('')
   const [lname, setLname] = useState('')
   const [emailMe, setEmailMe] = useState('')
@@ -50,6 +57,31 @@ function CheckOut() {
       .catch((err) => {
       });
 
+  }, [])
+
+  useEffect(() => {
+    var data = JSON.stringify({
+      "roomType": `${roomType}`,
+      "accomodationId": `${hotelId}`
+    });
+
+    var config = {
+      method: 'post',
+      url: 'https://bookme.up.railway.app/api/v1/rooms',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data: data
+    };
+
+    axios(config)
+      .then(function (res) {
+        setRoomMain(res.data.data)
+        console.log(roomMain);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }, [])
   useEffect(() => {
 
@@ -112,38 +144,101 @@ function CheckOut() {
 
   }
 
+  const pay = (e) => {
+    e.preventDefault()
+    Checkout.showLightbox()
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
+
     setIsSubmit(true)
-    const data = {
-      title,
-      fname,
-      lname,
-      email: emailMe,
-      bookingForName: fullnameOther,
-      bookingForEmail: emailOther,
-      country,
-      phone: tel,
-      eventId: event,
-      promotionCode: promo,
-      paymentMethod: paymentOption,
-      roomType,
-      accomodationId: hotelId,
-      purpose,
-      arriveDate,
-      arriveTime,
-      question,
-      dayNumber: 1
+    // const data = {
+    //   title,
+    //   fname,
+    //   lname,
+    //   email: emailMe,
+    //   bookingForName: fullnameOther,
+    //   bookingForEmail: emailOther,
+    //   country,
+    //   phone: tel,
+    //   eventId: event,
+    //   promotionCode: promo,
+    //   paymentMethod: paymentOption,
+    //   roomType,
+    //   accomodationId: hotelId,
+    //   purpose,
+    //   arriveDate,
+    //   arriveTime,
+    //   question,
+    //   dayNumber: 1
 
 
-    }
-    axios
-      .post(`https://bookme.up.railway.app/api/v1/book`, {
-        ...data
-      })
-      .then((res) => {
-        setOpen(true)
-        setIsSubmit(false)
+    // }
+    // axios
+    //   .post(`https://bookme.up.railway.app/api/v1/book`, {
+    //     ...data
+    //   })
+    //   .then((res) => {
+
+
+      
+        var data1 = JSON.stringify({
+          "apiOperation": "CREATE_CHECKOUT_SESSION",
+          "interaction": {
+            "operation": "PURCHASE"
+          },
+          "order": {
+            "amount": 10,
+            "currency": "USD",
+            "id": "60988466"
+          }
+        });
+        var config1 = {
+          method: 'post',
+          url: 'https://ap-gateway.mastercard.com/api/rest/version/61/merchant/8206000697/session',
+          headers: {
+            'Authorization': 'Basic bWVyY2hhbnQuODIwNjAwMDY5NzpiZTcxZTIyYmM1YTZjMWQ0YmRhYWE4NWY3OWM2NTBiZA==',
+            'Content-Type': 'application/json'
+          },
+          data: data1
+        };
+        axios(config1)
+          .then(function (response) {
+            // Checkout.configure({
+            //   session: {
+            //     id: 'SESSION0002686375987G34998295F5' // session id generated - REQUIRED
+            //   },
+            //   merchant: "8206000697", // your merchant MID here  - REQUIRED
+            //   order: {
+            //     amount: 1, //  - REQUIRED
+            //     currency: "USD", //  - REQUIRED
+            //     description: "Ordered goods", // - REQUIRED
+            //     id: "60901466", // should be unique per transaction - REQUIRED
+            //     reference: "6083452094ppp"  // should be unique per transaction - REQUIRED
+            //   },
+            //   transaction: {
+            //     reference: "6034522094ppp" // should be unique per transaction - REQUIRED
+            //   },
+            //   interaction: {
+            //     operation: "PURCHASE", //  - REQUIRED, do not change
+            //     merchant: {
+            //       name: "GODISCOVER AFRICA LTD",  // Have your merchant name and address here
+            //       address: {
+            //         line1: "kicukiro",
+            //         line1: "",
+            //       }
+            //     },
+            //   },
+            // });
+            console.log(JSON.stringify(response.data));
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+
+        // setOpen(true)
+        // setIsSubmit(false)
 
         // Swal.fire({
         //   title: 'Thank for Booking with us!',
@@ -151,14 +246,15 @@ function CheckOut() {
         //   icon: 'success',
         //   confirmButtonText: 'ok'
         // })
-      })
-      .catch((err) => {
-        console.log(err)
-      });
+      // })
+      // .catch((err) => {
+      //   console.log(err)
+      // });
   }
 
   return (
     <>
+
       <TopNavbar />
       <ConfirmDialog title={"booking confirmation"} children={`Thank you for booking ${hotel.name} with Go Discover Africa, a leading event organizing and tour company in Rwanda. We are pleased to confirm that your reservation has been received and is being processed. Your booking will be confirmed after review within the next 24 hours.`} open={open} setOpen={setOpen} />
       <div className='container-fluid'>
@@ -172,119 +268,123 @@ function CheckOut() {
         </div>
       </div>
       <br></br>
-      <div >
-        <div className='stepper'>
-          <div className='step-one'>
-            <div id='step1' onClick={hideFirst} className='step-number'>
-              <p>1</p>
-            </div>
-            <p>Personal Information</p>
-          </div>
-          <div className='step-one'>
-            <div id='step1' onClick={hideSecond} className='step-number'>  <p>2</p></div>
-            <p>Contacts Information</p>
 
-          </div>
-          <div className='step-one'>
-            <div id='step3' className='step-number' onClick={hideThird}>  <p>3</p></div>
-            <p>Final</p>
 
+
+      <div className='stepper'>
+        <div className='step-one'>
+          <div id='step1' onClick={hideFirst} className='step-number'>
+            <p>1</p>
           </div>
+          <p>Personal Information</p>
         </div>
-        <hr></hr>
-        <div style={{ marginLeft: "100px" }}>
-          <div id='first' className='form-first'>
-            <br></br>
-            <p><h3>Enter Details</h3></p>
-            <br></br>
+        <div className='step-one'>
+          <div id='step1' onClick={hideSecond} className='step-number'>  <p>2</p></div>
+          <p>Contacts Information</p>
 
-            <form>
-              <div className='form'>
-                <div className='form-names'>
-                  <div className='form-group'>
-                    <label>Title</label>
+        </div>
+        <div className='step-one'>
+          <div id='step3' className='step-number' onClick={hideThird}>  <p>3</p></div>
+          <p>Final</p>
 
-                    <select type="text" value={title} onChange={(e) => setTitle(e.target.value)} className='form-control'>
-                      <option selected disabled>select Title</option>
-                      <option>Mr</option>
-                      <option>Mrs</option>
-                      <option>Ms</option>
-                      <option>Prefer not say</option>
-                    </select>
+        </div>
+      </div>
+      <hr></hr>
+      <div className='ClassRoom'>
+        <div className='form-step'>
+          <div style={{ marginLeft: "100px" }}>
+            <div id='first' className='form-first'>
+              <br></br>
+              <p><h4>Enter Details</h4></p>
+              <br></br>
 
+              <form>
+                <div className='form'>
+                  <div className='form-names'>
+                    <div className='form-group'>
+                      <label>Title</label>
+
+                      <select type="text" value={title} onChange={(e) => setTitle(e.target.value)} className='form-control'>
+                        <option selected disabled>select Title</option>
+                        <option>Mr</option>
+                        <option>Mrs</option>
+                        <option>Ms</option>
+                        <option>Prefer not say</option>
+                      </select>
+
+                    </div>
+                    <div className='form-group'>
+                      <label>Fisrt Name</label>
+                      <input type="text" value={fname} onChange={(e) => setFname(e.target.value)} placeholder='Enter Your Fisrt Name' required className='form-control' />
+
+                    </div>
+                    <div className='form-group'>
+                      <label>Second Name</label>
+                      <input type="text" value={lname} onChange={(e) => setLname(e.target.value)} placeholder='Enter Your Second Name' required className='form-control' />
+                    </div>
                   </div>
-                  <div className='form-group'>
-                    <label>Fisrt Name</label>
-                    <input type="text" value={fname} onChange={(e) => setFname(e.target.value)} placeholder='Enter Your Fisrt Name' required className='form-control' />
+                  <div className='group-email'>
 
+                    <div className='form-group' style={{ marginLeft: "10px" }}>
+                      <label>Email</label>
+                      <input type="email" value={emailMe} onChange={(e) => setEmailMe(e.target.value)} placeholder='Enter Your Email' required className='form-control' />
+
+
+
+                    </div>
                   </div>
-                  <div className='form-group'>
-                    <label>Second Name</label>
-                    <input type="text" value={lname} onChange={(e) => setLname(e.target.value)} placeholder='Enter Your Second Name' required className='form-control' />
+
+                  <p>Who want to book?</p>
+
+                  <p onClick={showField1}> <input checked type="radio" name="who" />I'm the main guest</p>
+                  <p onClick={showField} ><input type="radio" name="who" /> I'm booking for someone else</p>
+
+                  <div className='form-names' id='fieldBook' style={{ display: "none" }} >
+                    <div className='form-group'>
+                      <label>Full Name</label>
+                      <input type="text" value={fullnameOther} onChange={(e) => setFullnameOther(e.target.value)} placeholder='Enter Full Name' className='form-control' />
+
+                    </div>
+                    <div className='form-group'>
+                      <label>Email</label>
+                      <input value={emailOther} onChange={(e) => setEmailOther(e.target.value)} type="email" placeholder='Enter Email' className='form-control' />
+                    </div>
                   </div>
+                  <p><h4>Ask a question</h4></p>
+                  <p className='ask'>
+                    Type your requests in English here – we'll share them with the property.<br />
+                    Special requests cannot be guaranteed – but the property will do its best to meet your needs.<br />
+                    You can always make a special request after your booking is complete!<br />
+                  </p>
+                  <textarea rows="5" cols="40" value={question} onChange={(e) => setQuestion(e.target.value)}></textarea>
+                  <p className='ask'>
+                    Let the property know when you plan to arrive (optional)
+
+                  </p>
+                  <p className='ask'>
+                    You might hear back from the property about your arrival time.
+
+                  </p>
+                  <p className='ask'>
+                    Check-in time: Your room will be ready for check-in between 14:00 PM and 14:00
+                  </p>
+                  <p className='ask'>
+                    Arrival time:
+
+                    <input type="date" name="date" value={arriveDate} onChange={(e) => setArriveDate(e.target.value)} />
+                    <input type="time" name="time" value={arriveTime} onChange={(e) => setArriveTime(e.target.value)} />
+                    |
+                    - Time is for  {hotel.name} time zone
+                  </p>
+
+                  <br></br>
+                  <span onClick={() => Checkout.showLightbox()} style={{ cursor: "pointer" }} className='btn-c' >Continue</span>
                 </div>
-                <div className='group-email'>
+              </form>
+            </div>
+            <div id='second' className='form-second' style={{ display: "none" }}>
+              <p><h4>Enter Contact Information</h4></p>
 
-                  <div className='form-group'>
-                    <label>Email</label>
-                    <input type="email" value={emailMe} onChange={(e) => setEmailMe(e.target.value)} placeholder='Enter Your Email' required className='form-control' />
-
-
-
-                  </div>
-                </div>
-
-                <p>Who want to book?</p>
-
-                <p onClick={showField1}> <input checked type="radio" name="who" />I'm the main guest</p>
-                <p onClick={showField} ><input type="radio" name="who" /> I'm booking for someone else</p>
-
-                <div className='form-names' id='fieldBook' style={{ display: "none" }} >
-                  <div className='form-group'>
-                    <label>Full Name</label>
-                    <input type="text" value={fullnameOther} onChange={(e) => setFullnameOther(e.target.value)} placeholder='Enter Full Name' className='form-control' />
-
-                  </div>
-                  <div className='form-group'>
-                    <label>Email</label>
-                    <input value={emailOther} onChange={(e) => setEmailOther(e.target.value)} type="email" placeholder='Enter Email' className='form-control' />
-                  </div>
-                </div>
-                <p><h3>Ask a question</h3></p>
-                <p>
-                  Type your requests in English here – we'll share them with the property.<br />
-                  Special requests cannot be guaranteed – but the property will do its best to meet your needs.<br />
-                  You can always make a special request after your booking is complete!<br />
-                </p>
-                <textarea rows="5" cols="40" value={question} onChange={(e) => setQuestion(e.target.value)}></textarea>
-                <p>
-                  Let the property know when you plan to arrive (optional)
-
-                </p>
-                <p>
-                  You might hear back from the property about your arrival time.
-
-                </p>
-                <p>
-                  Check-in time: Your room will be ready for check-in between 14:00 PM and 14:00
-                </p>
-                <p>
-                  Arrival time:
-
-                  <input type="date" name="date" value={arriveDate} onChange={(e) => setArriveDate(e.target.value)} />
-                  <input type="time" name="time" value={arriveTime} onChange={(e) => setArriveTime(e.target.value)} />
-                  |
-                  - Time is for  {hotel.name} time zone
-                </p>
-
-                <br></br>
-                <span onClick={hideSecond} style={{ cursor: "pointer" }} className='btn-c' >Continue</span>
-              </div>
-            </form>
-          </div>
-          <div id='second' className='form-second' style={{ display: "none" }}>
-            <p><h2>Enter Contact Information</h2></p>
-            <form>
               <div className='form'>
 
                 <div className='group-email'>
@@ -554,7 +654,7 @@ function CheckOut() {
                 </div>
 
                 <p>
-                  <h3>What's the purpose of visit?</h3>
+                  <h4>What's the purpose of visit?</h4>
 
                 </p>
                 <br />
@@ -596,37 +696,90 @@ function CheckOut() {
                 <span onClick={hideThird} style={{ cursor: "pointer" }} className='btn-c' >Continue</span>
 
               </div>
-            </form>
+
+            </div>
+
+            <div id='third' className='form-first' style={{ display: "none" }}>
+              <p><h4>How Do You Want To Pay.</h4></p>
+              <form onSubmit={handleSubmit}>
+                <div className='form'>
+
+                  <div className='group-email'>
+
+                    <div className='form-group'>
+                      <label>Payment Option</label>
+                      <select type="text" placeholder='Enter Your Country' className='form-control' onChange={(e) => setPaymentOption(e.target.value)} required>
+                        <option selected disabled>Select Option</option>
+                        <option>Visa Card</option>
+                        <option>Master Card</option>
+                        <option>Bank Transfer</option>
+
+                      </select>
+
+
+
+                    </div>
+                  </div>
+                  <br></br>
+                  <button type='submit' className='btn-c' >{isSubmit ? "Loading..." : "Submit"} </button>
+                </div>
+              </form>
+            </div>
           </div>
 
-          <div id='third' className='form-first' style={{ display: "none" }}>
-            <p><h3>How Do You Want To Pay.</h3></p>
-            <form onSubmit={handleSubmit}>
-              <div className='form'>
 
-                <div className='group-email'>
+        </div>
+        <div className='selectRoom'>
 
-                  <div className='form-group'>
-                    <label>Payment Option</label>
-                    <select type="text" placeholder='Enter Your Country' className='form-control' onChange={(e) => setPaymentOption(e.target.value)} required>
-                      <option selected disabled>Select Option</option>
-                      <option>Visa Card</option>
-                      <option>Master Card</option>
-                      <option>Bank Transfer</option>
+          <h3>Room</h3>
+          <div className='group-email'>
 
-                    </select>
+            <div className='room' style={{ marginLeft: "10px" }}>
+              <label>Enter Number of Room</label>
+              <input type="number" min="1" value={rooms} onChange={(e) => setRoom(e.target.value)} placeholder='Enter Number of Room' required className='form-control' />
 
 
 
-                  </div>
-                </div>
-                <br></br>
-                <button type='submit' className='btn-c' >{isSubmit ? "Loading..." : "Submit"} </button>
+            </div>
+            <div className='fromDate'>
+
+              <div className='form-group'>
+                <label>from</label>
+                <input type="date" value={fname} onChange={(e) => setFname(e.target.value)} placeholder='Enter Your Fisrt Name' required className='form-control' />
+
               </div>
-            </form>
+              <div className='form-group'>
+                <label>to</label>
+                <input type="date" value={lname} onChange={(e) => setLname(e.target.value)} placeholder='Enter Your Second Name' required className='form-control' />
+              </div>
+            </div>
+          </div>
+          <div className='includesRoom'>
+            <div className='facility' id='facility'>
+              <h3>
+                Room Facilities
+              </h3>
+
+              <hr />
+              <div className='items'>
+                {roomMain.room && roomMain.room.facilities.map(item => (
+                  <p>
+                    <span></span>
+                    {item}
+                  </p>
+                ))}
+
+              </div>
+
+            </div>
           </div>
         </div>
+
+
+
+
       </div>
+      <script>alert("give me")</script>
       <br></br>
       <br></br>
       <Footer />
