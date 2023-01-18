@@ -154,33 +154,33 @@ function CheckOut() {
     e.preventDefault()
 
     setIsSubmit(true)
-    // const data = {
-    //   title,
-    //   fname,
-    //   lname,
-    //   email: emailMe,
-    //   bookingForName: fullnameOther,
-    //   bookingForEmail: emailOther,
-    //   country,
-    //   phone: tel,
-    //   eventId: event,
-    //   promotionCode: promo,
-    //   paymentMethod: paymentOption,
-    //   roomType,
-    //   accomodationId: hotelId,
-    //   purpose,
-    //   arriveDate,
-    //   arriveTime,
-    //   question,
-    //   dayNumber: 1
+    const data = {
+      title,
+      fname,
+      lname,
+      email: emailMe,
+      bookingForName: fullnameOther,
+      bookingForEmail: emailOther,
+      country,
+      phone: tel,
+      eventId: event,
+      promotionCode: promo,
+      paymentMethod: paymentOption,
+      roomType,
+      accomodationId: hotelId,
+      purpose,
+      arriveDate,
+      arriveTime,
+      question,
+      dayNumber: 1
 
 
-    // }
-    // axios
-    //   .post(`https://bookme.up.railway.app/api/v1/book`, {
-    //     ...data
-    //   })
-    //   .then((res) => {
+    }
+    axios
+      .post(`https://bookme.up.railway.app/api/v1/book`, {
+        ...data
+      })
+      .then((res) => {
 
 
       
@@ -190,7 +190,7 @@ function CheckOut() {
             "operation": "PURCHASE"
           },
           "order": {
-            "amount": 10,
+            "amount": "10",
             "currency": "USD",
             "id": "60988466"
           }
@@ -238,19 +238,19 @@ function CheckOut() {
             console.log(error);
           });
 
-        // setOpen(true)
-        // setIsSubmit(false)
+        setOpen(true)
+        setIsSubmit(false)
 
-        // Swal.fire({
-        //   title: 'Thank for Booking with us!',
-        //   text: 'Your request sent successfull',
-        //   icon: 'success',
-        //   confirmButtonText: 'ok'
-        // })
-      // })
-      // .catch((err) => {
-      //   console.log(err)
-      // });
+        Swal.fire({
+          title: 'Thank for Booking with us!',
+          text: 'Your request sent successfull',
+          icon: 'success',
+          confirmButtonText: 'ok'
+        })
+      })
+      .catch((err) => {
+        console.log(err)
+      });
   }
 
   return (
