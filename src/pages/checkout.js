@@ -209,7 +209,7 @@ function CheckOut() {
         
         var config = {
           method: 'post',
-          url: 'http://localhost:5000/api/v1/payment/',
+          url: 'https://bookme.up.railway.app/api/v1/payment/',
           headers: { 
             'Content-Type': 'application/json'
           },
