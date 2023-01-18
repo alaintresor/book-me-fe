@@ -422,8 +422,8 @@
  }
 
  body {
-   width: 100vw;
-
+   min-width: 100vw !important;
+   min-height: 100vh !important;
  }
 
  * {
@@ -526,8 +526,9 @@
    border-bottom: solid 1px #7d7d7d;
    width: 20%;
  }
+
  .rooms table td button {
-  margin-top: 1rem;
+   margin-top: 1rem;
    padding: 0.6rem;
    background-color: #0B093B;
    color: white;
