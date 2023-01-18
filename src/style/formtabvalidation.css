@@ -90,6 +90,7 @@ p{
     
     display: flex;
     width: 100%;
+    min-height: 75vh !important;
     margin: 50px 0px;
 
 }

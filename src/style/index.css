@@ -510,6 +510,8 @@
  }
 
  .rooms table {
+   border-collapse: collapse;
+   border-spacing: 0;
    width: 100%;
    text-align: left;
  }
@@ -522,14 +524,20 @@
 
  }
 
- .rooms table td {
+ .rooms table .data {
    border-bottom: solid 1px #7d7d7d;
-   width: 20%;
  }
 
  .rooms table td button {
-   margin-top: 1rem;
+   margin: 1rem 0;
    padding: 0.6rem;
    background-color: #0B093B;
    color: white;
  }
+
+ @media only screen and (max-width: 600px) {
+  .responsive-table {
+    width: 100% !important;
+    overflow-x: auto !important;
+  }
+}
