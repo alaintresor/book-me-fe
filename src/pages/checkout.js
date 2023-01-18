@@ -102,7 +102,7 @@ function CheckOut() {
     <>
       <TopNavbar />
       <div className='container-fluid'>
-        <div className='header row' style={{ background: `url('${hotel.image}')`, backgroundSize: "cover", backgroundRepeat: "no-repeat" }}>
+        <div className='header row HeaderDetails' style={{ backgroundImage: `url('${hotel.image}')`, backgroundRepeat: "no-repeat" }}>
 
           <h1>
             {hotel.name}
