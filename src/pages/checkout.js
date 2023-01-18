@@ -8,12 +8,12 @@ import { alertActions } from "../redux/alertSlice";
 import Swal from 'sweetalert2'
 import ConfirmDialog from '../components/Modal/ConfirmDialog';
 import Banner from '../components/Sections/Banner';
+import token from 'basic-auth-token';
 
 function CheckOut() {
   const Checkout = window.Checkout;
 
-
-
+  
 
 
   const dispatch = useDispatch()
@@ -195,16 +195,27 @@ function CheckOut() {
             "id": "60988466"
           }
         });
+      const  headers= {
+          'Authorization': 'Basic bWVyY2hhbnQuODIwNjAwMDY5NzpiZTcxZTIyYmM1YTZjMWQ0YmRhYWE4NWY3OWM2NTBiZA==',
+          'Content-Type': 'application/json'
+        }
         var config1 = {
           method: 'post',
           url: 'https://ap-gateway.mastercard.com/api/rest/version/61/merchant/8206000697/session',
           headers: {
             'Authorization': 'Basic bWVyY2hhbnQuODIwNjAwMDY5NzpiZTcxZTIyYmM1YTZjMWQ0YmRhYWE4NWY3OWM2NTBiZA==',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin':'*',
+            'Sec-Fetch-Mode': 'no-cors'
           },
           data: data1
         };
-        axios(config1)
+        axios.post('https://ap-gateway.mastercard.com/api/rest/version/61/merchant/8206000697/session',data1,{
+       
+         headers: {
+          'Authorization': 'Basic bWVyY2hhbnQuODIwNjAwMDY5NzpiZTcxZTIyYmM1YTZjMWQ0YmRhYWE4NWY3OWM2NTBiZA==',
+          'Content-Type': 'application/json'
+        }})
           .then(function (response) {
             // Checkout.configure({
             //   session: {
@@ -281,6 +292,7 @@ function CheckOut() {
 
         </div>
       </div>
+
       <hr></hr>
       <div className='ClassRoom'>
         <div className='form-step'>
@@ -370,7 +382,7 @@ function CheckOut() {
                   </p>
 
                   <br></br>
-                  <span onClick={() => Checkout.showLightbox()} style={{ cursor: "pointer" }} className='btn-c' >Continue</span>
+                  <span onClick={hideSecond} style={{ cursor: "pointer" }} className='btn-c' >Continue</span>
                 </div>
               </form>
             </div>
