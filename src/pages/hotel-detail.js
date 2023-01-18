@@ -16,6 +16,7 @@ function HotelDetail() {
             .get(`https://bookme.up.railway.app/api/v1/accomodation/${id}`)
             .then((res) => {
                 const { accomodation } = res.data.data
+                console.log(accomodation)
                 setHotel(accomodation)
             })
             .catch((err) => {
