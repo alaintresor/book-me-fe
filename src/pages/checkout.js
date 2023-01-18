@@ -3,25 +3,38 @@ import { useParams } from 'react-router';
 import TopNavbar from '../components/Nav/TopNavbar';
 import axios from 'axios';
 import Footer from "../components/Sections/Footer"
+import { useDispatch, useSelector } from 'react-redux';
+import { alertActions } from "../redux/alertSlice";
+import Swal from 'sweetalert2'
+import ConfirmDialog from '../components/Modal/ConfirmDialog';
+
 function CheckOut() {
+
+  const dispatch = useDispatch()
+
   let { roomType, hotelId } = useParams()
-  const [title,setTitle]  = useState('')
-  const [fname,setFname]  = useState('')
-  const [lname,setLname]  = useState('')
-  const [emailMe,setEmailMe]  = useState('')
+  const [title, setTitle] = useState('')
+  const [fname, setFname] = useState('')
+  const [lname, setLname] = useState('')
+  const [emailMe, setEmailMe] = useState('')
   const [isGuest, setIsGuest] = useState(false)
-  const [fullnameOther,setFullnameOther]  = useState('')
-  const [emailOther,setEmailOther]  = useState('')
-  const [country,setCountry]  = useState('')
-  const [tel,setTel]  = useState('')
-  const [attendingEvent,setAttendingEvent]  = useState(false)
-  const [event,setEvent]  = useState('')
-  const [promo,setPromo]  = useState('')
-  const [paymentOption,setPaymentOption]  = useState('')
+  const [fullnameOther, setFullnameOther] = useState('')
+  const [emailOther, setEmailOther] = useState('')
+  const [country, setCountry] = useState('')
+  const [tel, setTel] = useState('')
+  const [attendingEvent, setAttendingEvent] = useState(false)
+  const [event, setEvent] = useState('')
+  const [promo, setPromo] = useState('')
+  const [paymentOption, setPaymentOption] = useState('')
+  const [arriveTime, setArriveTime] = useState('')
+  const [arriveDate, setArriveDate] = useState('')
+  const [question, setQuestion] = useState('')
+  const [purpose, setPurpose] = useState('Personal reason')
+  const [open, setOpen] = useState(false)
 
-  
 
-  
+
+
   const [hotel, setHotel] = useState({})
 
   let [events, setEvents] = useState([])
@@ -38,15 +51,15 @@ function CheckOut() {
 
   }, [])
   useEffect(() => {
- 
+
     axios
       .get(`https://bookme.up.railway.app/api/v1/event`)
       .then((res) => {
-        console.log(res.data.data)
-        const { event } = res.data.data
-        setEvents(event)
+        const { events } = res.data.data
+        setEvents(events)
       })
       .catch((err) => {
+        console.log(err)
       });
   }, [])
 
@@ -98,9 +111,53 @@ function CheckOut() {
 
   }
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const data = {
+      title,
+      fname,
+      lname,
+      email: emailMe,
+      bookingForName: fullnameOther,
+      bookingForEmail: emailOther,
+      country,
+      phone: tel,
+      eventId: event,
+      promotionCode: promo,
+      paymentMethod: paymentOption,
+      roomType,
+      accomodationId: hotelId,
+      purpose,
+      arriveDate,
+      arriveTime,
+      question,
+      dayNumber: 1
+
+
+    }
+    axios
+      .post(`https://bookme.up.railway.app/api/v1/book`, {
+        ...data
+      })
+      .then((res) => {
+        setOpen(true)
+
+        // Swal.fire({
+        //   title: 'Thank for Booking with us!',
+        //   text: 'Your request sent successfull',
+        //   icon: 'success',
+        //   confirmButtonText: 'ok'
+        // })
+      })
+      .catch((err) => {
+        console.log(err)
+      });
+  }
+
   return (
     <>
       <TopNavbar />
+      <ConfirmDialog title={"Thank you"} children="Your request sent successfull" open={open} setOpen={setOpen} />
       <div className='container-fluid'>
         <div className='header row' style={{ background: `url('${hotel.image}')`, backgroundSize: "cover", backgroundRepeat: "no-repeat" }}>
 
@@ -144,7 +201,7 @@ function CheckOut() {
                   <div className='form-group'>
                     <label>Title</label>
 
-                    <select type="text" value={title} onChange={(e)=>setTitle(e.target.value)} className='form-control'>
+                    <select type="text" value={title} onChange={(e) => setTitle(e.target.value)} className='form-control'>
                       <option selected disabled>select Title</option>
                       <option>Mr</option>
                       <option>Mrs</option>
@@ -155,19 +212,19 @@ function CheckOut() {
                   </div>
                   <div className='form-group'>
                     <label>Fisrt Name</label>
-                    <input type="text" value={fname} onChange={(e)=>setFname(e.target.value)} placeholder='Enter Your Fisrt Name' className='form-control' />
+                    <input type="text" value={fname} onChange={(e) => setFname(e.target.value)} placeholder='Enter Your Fisrt Name' className='form-control' />
 
                   </div>
                   <div className='form-group'>
                     <label>Second Name</label>
-                    <input type="text" value={lname} onChange={(e)=>setLname(e.target.value)} placeholder='Enter Your Second Name' className='form-control' />
+                    <input type="text" value={lname} onChange={(e) => setLname(e.target.value)} placeholder='Enter Your Second Name' className='form-control' />
                   </div>
                 </div>
                 <div className='group-email'>
 
                   <div className='form-group'>
-                    <label>Title</label>
-                    <input type="email" value={emailMe} onChange={(e)=>setEmailMe(e.target.value)} placeholder='Enter Your Email' className='form-control' />
+                    <label>Email</label>
+                    <input type="email" value={emailMe} onChange={(e) => setEmailMe(e.target.value)} placeholder='Enter Your Email' className='form-control' />
 
 
 
@@ -181,13 +238,13 @@ function CheckOut() {
 
                 <div className='form-names' id='fieldBook' style={{ display: "none" }} >
                   <div className='form-group'>
-                    <label>Fisrt Name</label>
-                    <input type="text" value={fullnameOther} onChange={(e)=>setFullnameOther(e.target.value)} placeholder='Enter Your Fisrt Name' className='form-control' />
+                    <label>Full Name</label>
+                    <input type="text" value={fullnameOther} onChange={(e) => setFullnameOther(e.target.value)} placeholder='Enter Full Name' className='form-control' />
 
                   </div>
                   <div className='form-group'>
                     <label>Email</label>
-                    <input value={emailOther} onChange={(e)=>setEmailOther(e.target.value)} type="email" placeholder='Enter Your Second Name' className='form-control' />
+                    <input value={emailOther} onChange={(e) => setEmailOther(e.target.value)} type="email" placeholder='Enter Email' className='form-control' />
                   </div>
                 </div>
                 <p><h3>Ask a question</h3></p>
@@ -196,7 +253,7 @@ function CheckOut() {
                   Special requests cannot be guaranteed – but the property will do its best to meet your needs.<br />
                   You can always make a special request after your booking is complete!<br />
                 </p>
-                <textarea rows="5" cols="40"></textarea>
+                <textarea rows="5" cols="40" value={question} onChange={(e) => setQuestion(e.target.value)}></textarea>
                 <p>
                   Let the property know when you plan to arrive (optional)
 
@@ -211,14 +268,14 @@ function CheckOut() {
                 <p>
                   Arrival time:
 
-                  <input type="date" name="date" />
-                  <input type="time" name="date" />
+                  <input type="date" name="date" value={arriveDate} onChange={(e) => setArriveDate(e.target.value)} />
+                  <input type="time" name="time" value={arriveTime} onChange={(e) => setArriveTime(e.target.value)} />
                   |
                   - Time is for  {hotel.name} time zone
                 </p>
 
                 <br></br>
-                <button className='btn-c'>Continue</button>
+                <button className='btn-c' type='button' onClick={hideFirst}>Continue</button>
               </div>
             </form>
           </div>
@@ -233,7 +290,7 @@ function CheckOut() {
 
                     <label for="country">Country</label>
 
-                    <select id="country" value={country} onChange={(e)=>setCountry(e.target.value)} name="country" class="form-control">
+                    <select id="country" value={country} onChange={(e) => setCountry(e.target.value)} name="country" class="form-control">
                       <option value="Afghanistan">Afghanistan</option>
                       <option value="Åland Islands">Åland Islands</option>
                       <option value="Albania">Albania</option>
@@ -486,7 +543,7 @@ function CheckOut() {
                   <div className='form-group'>
                     <label>Telephone</label>
 
-                    <input type="text" value={tel} onChange={(e)=>setTel(e.target.value)} placeholder='ex +167.....' className='form-control' />
+                    <input type="text" value={tel} onChange={(e) => setTel(e.target.value)} placeholder='ex +167.....' className='form-control' />
 
 
 
@@ -500,9 +557,9 @@ function CheckOut() {
                 <br />
                 <hr></hr>
                 <br />
-                <p onClick={showField1}> <input checked type="radio" name="who" />Personal reason</p>
-                <p onClick={showField} ><input type="radio" name="who" /> I am attending an event </p>
-                <p onClick={showField} ><input type="radio" name="who" /> Personal reason but i have a promotion code </p>
+                <p><input {...purpose == "Personal reason" ? "checked" : ""} type="radio" name="purpose" value={"Personal reason"} onChange={(e) => setPurpose(e.target.value)} />Personal reason</p>
+                <p><input {...purpose == "I am attending an event" ? "checked" : ""} type="radio" name="purpose" value={"I am attending an event"} onChange={(e) => setPurpose(e.target.value)} /> I am attending an event </p>
+                <p><input {...purpose == "Personal reason but i have a promotion code" ? "checked" : ""} type="radio" name="purpose" value={"Personal reason but i have a promotion code"} onChange={(e) => setPurpose(e.target.value)} /> Personal reason but i have a promotion code </p>
 
 
                 <br></br>
@@ -510,13 +567,16 @@ function CheckOut() {
                   <div className='form-group'>
                     <label>Select your event</label>
 
-                    <select value={event} onChange={(e)=>setEvent(e.target.value)}  type="text" className='form-control'>
-                    <option>
-                      Select Event
-                    </option>
-                    <option>
-                      Kalisimbi
-                    </option>
+                    <select value={event} onChange={(e) => setEvent(e.target.value)} type="text" className='form-control'>
+                      <option>
+                        Select Event
+                      </option>
+                      {events && events.map(item => (
+
+                        <option value={item.id} key={item.id}>
+                          {item.name}
+                        </option>
+                      ))}
 
 
                     </select>
@@ -524,27 +584,27 @@ function CheckOut() {
                   </div>
                   <div className='form-group'>
                     <label>Your promotion code</label>
-                    <input value={promo} onChange={(e)=>setPromo(e.target.value)}  type="text" placeholder='promo code.' className='form-control' />
+                    <input value={promo} onChange={(e) => setPromo(e.target.value)} type="text" placeholder='promo code.' className='form-control' />
 
                   </div>
 
                 </div>
                 <br></br>
-                <button className='btn-c'>Continue</button>
+                <button className='btn-c' type='button'  onClick={hideSecond}>Continue</button>
               </div>
             </form>
           </div>
 
           <div id='third' className='form-first' style={{ display: "none" }}>
             <p><h3>How Do You Want To Pay.</h3></p>
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className='form'>
 
                 <div className='group-email'>
 
                   <div className='form-group'>
                     <label>Payment Option</label>
-                    <select type="text" placeholder='Enter Your Country' className='form-control'>
+                    <select type="text" placeholder='Enter Your Country' className='form-control' onChange={(e) => setPaymentOption(e.target.value)}>
                       <option selected disabled>Select Option</option>
                       <option>Visa Card</option>
                       <option>Master Card</option>
@@ -557,7 +617,7 @@ function CheckOut() {
                   </div>
                 </div>
                 <br></br>
-                <button type='submit' className='btn-c'>Submit</button>
+                <button type='submit' className='btn-c' >Submit</button>
               </div>
             </form>
           </div>
