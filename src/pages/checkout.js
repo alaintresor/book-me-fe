@@ -8,7 +8,7 @@ import { alertActions } from "../redux/alertSlice";
 import Swal from 'sweetalert2'
 import ConfirmDialog from '../components/Modal/ConfirmDialog';
 import Banner from '../components/Sections/Banner';
-import token from 'basic-auth-token';
+
 
 function CheckOut() {
   const Checkout = window.Checkout;
@@ -145,10 +145,26 @@ function CheckOut() {
 
   }
 
-  const pay = (e) => {
-    e.preventDefault()
+  const pay = () => {
     Checkout.showLightbox()
   }
+  function generateUUID() { // Public Domain/MIT
+    var d = new Date().getTime();//Timestamp
+    var d2 = ((typeof performance !== 'undefined') && performance.now && (performance.now()*1000)) || 0;//Time in microseconds since page-load or 0 if unsupported
+    return 'xx-xxxx-4xxx-yxxx-xxx'.replace(/[xy]/g, function(c) {
+        var r = Math.random() * 16;//random number between 0 and 16
+        if(d > 0){//Use timestamp until depleted
+            r = (d + r)%16 | 0;
+            d = Math.floor(d/16);
+        } else {//Use microseconds since page-load if supported
+            r = (d2 + r)%16 | 0;
+            d2 = Math.floor(d2/16);
+        }
+        return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+    });
+}
+const uid =Math.floor(Math.random()*1000000);
+console.log(uid)
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -183,66 +199,48 @@ function CheckOut() {
       .then((res) => {
 
 
-      
         var data1 = JSON.stringify({
-          "apiOperation": "CREATE_CHECKOUT_SESSION",
-          "interaction": {
-            "operation": "PURCHASE"
-          },
-          "order": {
-            "amount": "10",
-            "currency": "USD",
-            "id": "60988466"
-          }
+          "amount": "10"
         });
-      const  headers= {
-          'Authorization': 'Basic bWVyY2hhbnQuODIwNjAwMDY5NzpiZTcxZTIyYmM1YTZjMWQ0YmRhYWE4NWY3OWM2NTBiZA==',
-          'Content-Type': 'application/json'
-        }
-        var config1 = {
+        
+        var config = {
           method: 'post',
-          url: 'https://ap-gateway.mastercard.com/api/rest/version/61/merchant/8206000697/session',
-          headers: {
-            'Authorization': 'Basic bWVyY2hhbnQuODIwNjAwMDY5NzpiZTcxZTIyYmM1YTZjMWQ0YmRhYWE4NWY3OWM2NTBiZA==',
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin':'*',
-            'Sec-Fetch-Mode': 'no-cors'
+          url: 'http://localhost:5000/api/v1/payment/',
+          headers: { 
+            'Content-Type': 'application/json'
           },
-          data: data1
+          data : data1
         };
-        axios.post('https://ap-gateway.mastercard.com/api/rest/version/61/merchant/8206000697/session',data1,{
-       
-         headers: {
-          'Authorization': 'Basic bWVyY2hhbnQuODIwNjAwMDY5NzpiZTcxZTIyYmM1YTZjMWQ0YmRhYWE4NWY3OWM2NTBiZA==',
-          'Content-Type': 'application/json'
-        }})
-          .then(function (response) {
-            // Checkout.configure({
-            //   session: {
-            //     id: 'SESSION0002686375987G34998295F5' // session id generated - REQUIRED
-            //   },
-            //   merchant: "8206000697", // your merchant MID here  - REQUIRED
-            //   order: {
-            //     amount: 1, //  - REQUIRED
-            //     currency: "USD", //  - REQUIRED
-            //     description: "Ordered goods", // - REQUIRED
-            //     id: "60901466", // should be unique per transaction - REQUIRED
-            //     reference: "6083452094ppp"  // should be unique per transaction - REQUIRED
-            //   },
-            //   transaction: {
-            //     reference: "6034522094ppp" // should be unique per transaction - REQUIRED
-            //   },
-            //   interaction: {
-            //     operation: "PURCHASE", //  - REQUIRED, do not change
-            //     merchant: {
-            //       name: "GODISCOVER AFRICA LTD",  // Have your merchant name and address here
-            //       address: {
-            //         line1: "kicukiro",
-            //         line1: "",
-            //       }
-            //     },
-            //   },
-            // });
+        
+        axios(config)
+        .then(function (response) {
+            Checkout.configure({
+              session: {
+                id: `${response.data.data.session.id}` 
+              },
+              merchant: "8206000697", 
+              order: {
+                amount: 1, 
+                currency: "USD", 
+                description: `Book ${roomType}`, 
+                id: uid, 
+                reference: uid
+              },
+              transaction: {
+                reference: uid 
+              },
+              interaction: {
+                operation: "PURCHASE",
+                merchant: {
+                  name: "GODISCOVER AFRICA LTD", 
+                  address: {
+                    line1: "kicukiro",
+                    line1: "",
+                  }
+                },
+              },
+            });
+            pay()
             console.log(JSON.stringify(response.data));
           })
           .catch(function (error) {
