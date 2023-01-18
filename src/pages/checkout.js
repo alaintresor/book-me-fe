@@ -31,6 +31,7 @@ function CheckOut() {
   const [question, setQuestion] = useState('')
   const [purpose, setPurpose] = useState('Personal reason')
   const [open, setOpen] = useState(false)
+  const [isSubmit, setIsSubmit] = useState(false)
 
 
 
@@ -113,6 +114,7 @@ function CheckOut() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    setIsSubmit(true)
     const data = {
       title,
       fname,
@@ -141,6 +143,7 @@ function CheckOut() {
       })
       .then((res) => {
         setOpen(true)
+        setIsSubmit(false)
 
         // Swal.fire({
         //   title: 'Thank for Booking with us!',
@@ -275,7 +278,7 @@ function CheckOut() {
                 </p>
 
                 <br></br>
-                <span onClick={hideSecond} style={{cursor:"pointer"}} className='btn-c' >Continue</span>
+                <span onClick={hideSecond} style={{ cursor: "pointer" }} className='btn-c' >Continue</span>
               </div>
             </form>
           </div>
@@ -590,7 +593,7 @@ function CheckOut() {
 
                 </div>
                 <br></br>
-                <span onClick={hideThird} style={{cursor:"pointer"}} className='btn-c' >Continue</span>
+                <span onClick={hideThird} style={{ cursor: "pointer" }} className='btn-c' >Continue</span>
 
               </div>
             </form>
@@ -618,7 +621,7 @@ function CheckOut() {
                   </div>
                 </div>
                 <br></br>
-                <button type='submit' className='btn-c' >Submit</button>
+                <button type='submit' className='btn-c' >{isSubmit ? "Loading..." : "Submit"} </button>
               </div>
             </form>
           </div>
