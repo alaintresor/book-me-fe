@@ -15,7 +15,6 @@ function CheckOut() {
 
 
 
-
   const dispatch = useDispatch()
 
   let { roomType, hotelId } = useParams()
@@ -43,10 +42,12 @@ function CheckOut() {
   const [fromDate, setFromDate] = useState('')
   const [toDate, setToDate] = useState('')
   const [dayNumber, setDayNumber] = useState(1)
-  const [date1, setDate1] = useState('')
-  const [date2, setDate2] = useState('')
-  const [diffTime, setDiffTime] = useState('')
+
+
+
+
   const [hotel, setHotel] = useState({})
+
   let [events, setEvents] = useState([])
 
   useEffect(() => {
@@ -155,117 +156,124 @@ function CheckOut() {
     e.preventDefault()
 
     setIsSubmit(true)
-    // const data = {
-    //   title,
-    //   fname,
-    //   lname,
-    //   email: emailMe,
-    //   bookingForName: fullnameOther,
-    //   bookingForEmail: emailOther,
-    //   country,
-    //   phone: tel,
-    //   eventId: event,
-    //   promotionCode: promo,
-    //   paymentMethod: paymentOption,
-    //   roomType,
-    //   accomodationId: hotelId,
-    //   purpose,
-    //   arriveDate,
-    //   arriveTime,
-    //   question,
-    //   dayNumber: 1
+    const data = {
+      title,
+      fname,
+      lname,
+      email: emailMe,
+      bookingForName: fullnameOther,
+      bookingForEmail: emailOther,
+      country,
+      phone: tel,
+      eventId: event,
+      promotionCode: promo,
+      paymentMethod: paymentOption,
+      roomType,
+      accomodationId: hotelId,
+      purpose,
+      arriveDate,
+      arriveTime,
+      question,
+      dayNumber: 1
 
 
-    // }
-    // axios
-    //   .post(`https://bookme.up.railway.app/api/v1/book`, {
-    //     ...data
-    //   })
-    //   .then((res) => {
-
-
-
-    var data1 = JSON.stringify({
-      "apiOperation": "CREATE_CHECKOUT_SESSION",
-      "interaction": {
-        "operation": "PURCHASE"
-      },
-      "order": {
-        "amount": 10,
-        "currency": "USD",
-        "id": "60988466"
-      }
-    });
-    var config1 = {
-      method: 'post',
-      url: 'https://ap-gateway.mastercard.com/api/rest/version/61/merchant/8206000697/session',
-      headers: {
-        'Authorization': 'Basic bWVyY2hhbnQuODIwNjAwMDY5NzpiZTcxZTIyYmM1YTZjMWQ0YmRhYWE4NWY3OWM2NTBiZA==',
-        'Content-Type': 'application/json'
-      },
-      data: data1
-    };
-    axios(config1)
-      .then(function (response) {
-        // Checkout.configure({
-        //   session: {
-        //     id: 'SESSION0002686375987G34998295F5' // session id generated - REQUIRED
-        //   },
-        //   merchant: "8206000697", // your merchant MID here  - REQUIRED
-        //   order: {
-        //     amount: 1, //  - REQUIRED
-        //     currency: "USD", //  - REQUIRED
-        //     description: "Ordered goods", // - REQUIRED
-        //     id: "60901466", // should be unique per transaction - REQUIRED
-        //     reference: "6083452094ppp"  // should be unique per transaction - REQUIRED
-        //   },
-        //   transaction: {
-        //     reference: "6034522094ppp" // should be unique per transaction - REQUIRED
-        //   },
-        //   interaction: {
-        //     operation: "PURCHASE", //  - REQUIRED, do not change
-        //     merchant: {
-        //       name: "GODISCOVER AFRICA LTD",  // Have your merchant name and address here
-        //       address: {
-        //         line1: "kicukiro",
-        //         line1: "",
-        //       }
-        //     },
-        //   },
-        // });
-        console.log(JSON.stringify(response.data));
+    }
+    axios
+      .post(`https://bookme.up.railway.app/api/v1/book`, {
+        ...data
       })
-      .catch(function (error) {
-        console.log(error);
+      .then((res) => {
+
+
+
+        var data1 = JSON.stringify({
+          "apiOperation": "CREATE_CHECKOUT_SESSION",
+          "interaction": {
+            "operation": "PURCHASE"
+          },
+          "order": {
+            "amount": "10",
+            "currency": "USD",
+            "id": "60988466"
+          }
+        });
+        const headers = {
+          'Authorization': 'Basic bWVyY2hhbnQuODIwNjAwMDY5NzpiZTcxZTIyYmM1YTZjMWQ0YmRhYWE4NWY3OWM2NTBiZA==',
+          'Content-Type': 'application/json'
+        }
+        var config1 = {
+          method: 'post',
+          url: 'https://ap-gateway.mastercard.com/api/rest/version/61/merchant/8206000697/session',
+          headers: {
+            'Authorization': 'Basic bWVyY2hhbnQuODIwNjAwMDY5NzpiZTcxZTIyYmM1YTZjMWQ0YmRhYWE4NWY3OWM2NTBiZA==',
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+            'Sec-Fetch-Mode': 'no-cors'
+          },
+          data: data1
+        };
+        axios.post('https://ap-gateway.mastercard.com/api/rest/version/61/merchant/8206000697/session', data1, {
+
+          headers: {
+            'Authorization': 'Basic bWVyY2hhbnQuODIwNjAwMDY5NzpiZTcxZTIyYmM1YTZjMWQ0YmRhYWE4NWY3OWM2NTBiZA==',
+            'Content-Type': 'application/json'
+          }
+        })
+          .then(function (response) {
+            // Checkout.configure({
+            //   session: {
+            //     id: 'SESSION0002686375987G34998295F5' // session id generated - REQUIRED
+            //   },
+            //   merchant: "8206000697", // your merchant MID here  - REQUIRED
+            //   order: {
+            //     amount: 1, //  - REQUIRED
+            //     currency: "USD", //  - REQUIRED
+            //     description: "Ordered goods", // - REQUIRED
+            //     id: "60901466", // should be unique per transaction - REQUIRED
+            //     reference: "6083452094ppp"  // should be unique per transaction - REQUIRED
+            //   },
+            //   transaction: {
+            //     reference: "6034522094ppp" // should be unique per transaction - REQUIRED
+            //   },
+            //   interaction: {
+            //     operation: "PURCHASE", //  - REQUIRED, do not change
+            //     merchant: {
+            //       name: "GODISCOVER AFRICA LTD",  // Have your merchant name and address here
+            //       address: {
+            //         line1: "kicukiro",
+            //         line1: "",
+            //       }
+            //     },
+            //   },
+            // });
+            console.log(JSON.stringify(response.data));
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+
+        setOpen(true)
+        setIsSubmit(false)
+
+        Swal.fire({
+          title: 'Thank for Booking with us!',
+          text: 'Your request sent successfull',
+          icon: 'success',
+          confirmButtonText: 'ok'
+        })
+      })
+      .catch((err) => {
+        console.log(err)
       });
-
-    // setOpen(true)
-    // setIsSubmit(false)
-
-    // Swal.fire({
-    //   title: 'Thank for Booking with us!',
-    //   text: 'Your request sent successfull',
-    //   icon: 'success',
-    //   confirmButtonText: 'ok'
-    // })
-    // })
-    // .catch((err) => {
-    //   console.log(err)
-    // });
   }
 
-  // const date1 = new Date(`${fromDate}`);
-  // const date2 = new Date(`${toDate}`);
-  // const diffTime = Math.abs(date2 - date1);
-  // const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-  // console.log(diffDays + " days");
   const getDates = () => {
     if (toDate != '' && fromDate != '') {
       const date1 = new Date(`${fromDate}`);
       const date2 = new Date(`${toDate}`);
       var diff = date2 - date1; // difference in milliseconds
       var diffDays = diff / (1000 * 60 * 60 * 24); // convert to number of days
-      
+
       console.log(diffDays)
       if (diffDays <= 0) {
         alert("error")
@@ -280,9 +288,10 @@ function CheckOut() {
 
   return (
     <>
+
       <TopNavbar />
       <Banner hotel={hotel} />
-      <ConfirmDialog title={"booking confirmation"} children={`Thank you for booking ${hotel.name} with Go Discover Africa, a leading event organizing and tour company in Rwanda. We are pleased to confirm that your reservation has been received and is being processed. Your booking will be confirmed after review within the next 24 hours.`} open={open} setOpen={setOpen} />
+      <ConfirmDialog title={"booking confirmation"} children={`Thank you for booking ${hotel.name} with Go Discover Africa, a leading event organizing and tour company in Rwanda. We are pleased to confirm that your reservation has been received and is being processed. Your booking will be confirmed after review within the with in 2 hours.`} open={open} setOpen={setOpen} />
       <br></br>
 
 
@@ -305,6 +314,7 @@ function CheckOut() {
 
         </div>
       </div>
+
       <hr></hr>
       <div className='ClassRoom'>
         <div className='form-step'>
@@ -394,7 +404,7 @@ function CheckOut() {
                   </p>
 
                   <br></br>
-                  <span onClick={() => Checkout.showLightbox()} style={{ cursor: "pointer" }} className='btn-c' >Continue</span>
+                  <span onClick={hideSecond} style={{ cursor: "pointer" }} className='btn-c' >Continue</span>
                 </div>
               </form>
             </div>
@@ -798,7 +808,6 @@ function CheckOut() {
 
 
       </div>
-      <script>alert("give me")</script>
       <br></br>
       <br></br>
       <Footer />

@@ -20,6 +20,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.2.2",
+    "basic-auth-token": "^0.4.2",
     "node-sass": "^8.0.0",
     "npm-watch": "^0.11.0",
     "react": "^18.2.0",
