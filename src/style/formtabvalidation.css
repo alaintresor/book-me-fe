@@ -1,6 +1,5 @@
 .stepper {
     display: flex;
-
 }
 
 .step-one {
@@ -28,7 +27,6 @@
     display: flex;
     width: 100%;
 }
-
 .group-email {
     width: 100%;
 }
@@ -55,12 +53,14 @@ input[type="number"] {
     box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
     border: 1px solid #ccc;
     border-radius: 4px;
+    height: 1.5rem;
 }
 
 select {
-    padding: 6px 10px;
+    padding: 10px 10px;
     border-radius: 4px;
     border: 1px solid grey;
+    
 }
 
 p {
@@ -87,9 +87,6 @@ p {
     display: flex;
     flex-direction: column;
 }
-
-
-
 .form-group-header input[type="text"],
 input[type="date"],
 input[type="number"] {
@@ -225,7 +222,6 @@ margin: 1rem 1rem 1rem 0;
     
     /* height: 30vh; */
 }
-
 .amount {
     font-size: 20px;
     padding: 10px;
@@ -762,6 +758,10 @@ label {
     transform: rotateY(180deg);
 }
 
+.hiden{
+    display: none;
+}
+
 
 @media only screen and (max-width: 960px) {
     .form-container {
@@ -789,5 +789,14 @@ label {
     }
     .group-email .form-group{
         width: 100%;
+    }
+    .hiden{
+        display: block;
+    }
+    .show{
+        display: none;
+    }
+    .selectRoom{
+        margin: 0;
     }
 }

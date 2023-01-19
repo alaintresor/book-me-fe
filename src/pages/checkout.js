@@ -729,6 +729,58 @@ function CheckOut() {
                   </div>
 
                   <div id='third' className='form-first' style={{ display: "none" }}>
+
+                    <div className='selectRoom hiden'>
+                      <h3>Room</h3>
+                      <div className='group-email'>
+
+                        <div className='room'>
+                          <label>Enter Number of Room</label>
+                          <input type="number" min="1" value={rooms} onChange={(e) => setRoom(e.target.value)} placeholder='Enter Number of Room' required className='form-control' />
+
+
+
+                        </div>
+                        <div className='fromDate'>
+
+                          <div className='form-group'>
+                            <label>from</label>
+                            <input type="date" value={fromDate} onChange={(e) => { setFromDate(e.target.value) }} onBlur={() => getDates()} required className='form-control' />
+
+                          </div>
+                          <div className='form-group'>
+                            <label>to</label>
+                            <input type="date" value={toDate} onChange={(e) => { setToDate(e.target.value) }} onBlur={() => getDates()} required className='form-control' />
+                          </div>
+                        </div>
+                      </div>
+                      <div className='includesRoom'>
+                        <p className='amount'>Amount To Pay {roomMain?.room?.roomCost * rooms * dayNumber}$</p>
+                      </div>
+                      <div className='includesRoom'>
+                        <div className='facility' id='facility'>
+                          <h3>
+                            Room Facilities
+                          </h3>
+
+                          <hr />
+                          <div className='items'>
+                            {roomMain.room && roomMain.room.facilities.map(item => (
+                              <p>
+                                <span><FontAwesomeIcon icon={faCheck} size="1x" color="green" /> </span>
+                                {item}
+                              </p>
+                            ))}
+
+                          </div>
+
+                        </div>
+                      </div>
+                      <br />
+                      <br />
+                      <br />
+                    </div>
+
                     <p><h4>How Do You Want To Pay.</h4></p>
                     <form onSubmit={handleSubmit}>
                       <div className='form'>
@@ -744,9 +796,6 @@ function CheckOut() {
                               <option>Bank Transfer</option>
 
                             </select>
-
-
-
                           </div>
                         </div>
                         <br></br>
@@ -770,7 +819,7 @@ function CheckOut() {
 
 
 
-          <div className='col-lg-5'>
+          <div className='col-lg-5 show'>
             <div className='selectRoom'>
               <h3>Room</h3>
               <div className='group-email'>
