@@ -1,6 +1,5 @@
 .stepper {
     display: flex;
-
 }
 
 .step-one {
@@ -28,7 +27,6 @@
     display: flex;
     width: 100%;
 }
-
 .group-email {
     width: 100%;
 }
@@ -87,9 +85,6 @@ p {
     display: flex;
     flex-direction: column;
 }
-
-
-
 .form-group-header input[type="text"],
 input[type="date"],
 input[type="number"] {

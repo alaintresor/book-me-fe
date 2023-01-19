@@ -77,6 +77,9 @@ const FormHome = styled.section`
   margin-top:22vh;
   @media (max-width: 960px) {
     flex-direction: column;
+    width: 100%;
+    margin-top:15vh;
+    padding: 20px;
   }
 `;
 
