@@ -11,7 +11,7 @@ export default function Banner({ hotel }) {
     return (
         <Wrapper>
 
-            <div className='darkBg header row HeaderDetails' style={{ backgroundImage: `url('${hotel.image}')`, backgroundSize: "cover", backgroundRepeat: "no-repeat" }}>
+            <div className='darkBg head row HeaderDetails' style={{ backgroundImage: `url('${hotel.image}')`, backgroundSize: "cover", backgroundRepeat: "no-repeat" }}>
 
                 <h1>
                     {hotel.name}

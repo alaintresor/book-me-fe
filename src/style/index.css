@@ -67,7 +67,7 @@
  figure,
  figcaption,
  footer,
- header,
+ head,
  hgroup,
  menu,
  nav,
@@ -93,7 +93,7 @@
  figcaption,
  figure,
  footer,
- header,
+ head,
  hgroup,
  menu,
  nav,
@@ -431,10 +431,8 @@
    margin: 0;
  }
 
- .header {
-   background: url("https://smartbookings.rw/gallery/hotels/1616404998.jpg");
+ .head {
    height: 40vh;
-   /* width: 100% !important; */
    margin-top: 5rem;
    display: flex;
    flex-direction: column;
@@ -444,11 +442,11 @@
 
  }
 
- .header h1 {
+ .head h1 {
    margin-bottom: 1rem;
  }
 
- .header span {
+ .head span {
    padding: 8px;
    background-color: rgb(1, 1, 61);
  }

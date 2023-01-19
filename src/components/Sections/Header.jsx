@@ -6,78 +6,75 @@ import HeaderImage from "../../assets/img/2000.jpg";
 
 export default function Header() {
   const navigate = useNavigate()
-  const [place,setPlace] = useState('')
-  const [arrival,setArrival] = useState('')
-  const [departure,setDeparture] = useState('')
-  const [room,setRoom] = useState('')
-  const [adult,setAdult] = useState('')
-  const [child,setChild] = useState('')
-  const handleSubmit=(e)=>{
-navigate(`/search/${place}/${arrival}/${departure}/${room}/${adult}/${child}`)
+  const [place, setPlace] = useState('')
+  const [arrival, setArrival] = useState('')
+  const [departure, setDeparture] = useState('')
+  const [room, setRoom] = useState('')
+  const [adult, setAdult] = useState('')
+  const [child, setChild] = useState('')
+  const handleSubmit = (e) => {
+    navigate(`/search/${place}/${arrival}/${departure}/${room}/${adult}/${child}`)
     e.preventDefault()
     console.log(place)
-    
+
   }
   return (
     <>
-    <Wrapper  className="" style={{  }}>
-  
-    <div className='container-fluid'>
-                <div className='header row' style={{ background: `url('${HeaderImage}')`, backgroundSize: "cover", backgroundRepeat: "no-repeat",width:"100%" }}>
+      <Wrapper style={{ background: `url('${HeaderImage}')`, backgroundSize: "cover", backgroundRepeat: "no-repeat", width: "100%" }}>
 
-                  <FormHome>
-                    <form onSubmit={handleSubmit}>
-                    <div className="form-container">
-                      <div className="form-group-header">
-                        <label htmlFor="place">Place</label>
-                        <input className="form-control1" type="text" value={place} onChange={(e)=>setPlace(e.target.value)} name="" id="" />
-                      </div>
-                      <div className="form-group-header">
-                        <label htmlFor="place">Arrival</label>
-                        <input className="form-control1" type="date"  value={arrival} onChange={(e)=>setArrival(e.target.value)} name="" id="" />
-                      </div>
-                      <div className="form-group-header">
-                        <label htmlFor="place">Departure</label>
-                        <input className="form-control1" type="date"  value={departure} onChange={(e)=>setDeparture(e.target.value)} name="" id="" />
-                      </div>
-                      <div className="form-group-header">
-                        <label htmlFor="place">Room</label>
-                        <input className="form-control1" type="number"  value={room} onChange={(e)=>setRoom(e.target.value)} name="" id="" />
-                      </div>
-                      <div className="form-group-header">
-                        <label htmlFor="place">Adult</label>
-                        <input className="form-control1" type="number"  value={adult} onChange={(e)=>setAdult(e.target.value)} name="" id="" />
-                      </div>
-                      <div className="form-group-header">
-                        <label htmlFor="place">Child</label>
-                        <input className="form-control1" type="number"  value={child} onChange={(e)=>setChild(e.target.value)} name="" id="" />
-                      </div>
-                      <div className="form-group-header">
-    
-                        <input className="btn" value="Search" type="submit"  name="" id="" />
-                      </div>
-                    </div>
-                    </form>
-                  </FormHome>
+        <div className='container-fluid'>
+          <center>
+            <FormHome>
+              <form onSubmit={handleSubmit}>
+                <div className="form-container">
+                  <div className="form-group-header">
+                    <label htmlFor="place">Place</label>
+                    <input className="form-control1" type="text" value={place} onChange={(e) => setPlace(e.target.value)} name="" id="" />
+                  </div>
+                  <div className="form-group-header">
+                    <label htmlFor="place">Arrival</label>
+                    <input className="form-control1" type="date" value={arrival} onChange={(e) => setArrival(e.target.value)} name="" id="" />
+                  </div>
+                  <div className="form-group-header">
+                    <label htmlFor="place">Departure</label>
+                    <input className="form-control1" type="date" value={departure} onChange={(e) => setDeparture(e.target.value)} name="" id="" />
+                  </div>
+                  <div className="form-group-header">
+                    <label htmlFor="place">Room</label>
+                    <input className="form-control1" type="number" value={room} onChange={(e) => setRoom(e.target.value)} name="" id="" />
+                  </div>
+                  <div className="form-group-header">
+                    <label htmlFor="place">Adult</label>
+                    <input className="form-control1" type="number" value={adult} onChange={(e) => setAdult(e.target.value)} name="" id="" />
+                  </div>
+                  <div className="form-group-header">
+                    <label htmlFor="place">Child</label>
+                    <input className="form-control1" type="number" value={child} onChange={(e) => setChild(e.target.value)} name="" id="" />
+                  </div>
+                  <div className="form-group-header">
+                    <label htmlFor="place"></label>
+                    <input className="btn" value="Search" type="submit" name="" id="" />
+                  </div>
                 </div>
-            </div>
-    </Wrapper>
-  
+              </form>
+            </FormHome>
+          </center>
+        </div>
+      </Wrapper>
+
     </>
   );
 }
 
 const FormHome = styled.section`
   padding: 60px;
-  position: absolute;
-
   z-index: 9;
   opacity: 0.8;
   background:#990f0f80;
   z-index:9px;
-  width: 75%;
+  width: 80%;
   border-radius:15px;
-  margin-top:20vh;
+  margin-top:22vh;
   @media (max-width: 960px) {
     flex-direction: column;
   }

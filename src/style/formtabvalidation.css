@@ -1,43 +1,54 @@
-.stepper{
+.stepper {
     display: flex;
-    width: 85%;
 
 }
-.step-one{
-    width:  30%;
+
+.step-one {
+    width: 30%;
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     align-content: center;
+
 }
-.step-number{
+
+.step-number {
     width: 50px;
     height: 50px;
-    background-color:rgb(1, 1, 61);;
+    background-color: rgb(1, 1, 61);
+    ;
     text-align: center;
     line-height: 30px;
     color: white;
     border-radius: 50px;
 }
-.form-names{
+
+.form-names {
     display: flex;
-    padding: 10px;
     width: 100%;
 }
-.group-email{
-    width: 50%;
-}
-.group-email .form-group{
-    width: 50%;
-}
- .form-group{
 
-    padding: 10px;
+.group-email {
+    width: 100%;
+}
+
+.group-email .form-group {
+    width: 50%;
+}
+
+.form-group {
+
+    padding-right: 10px;
     display: flex;
     flex-direction: column;
 }
-input[type="text"],input[type="time"],input[type="email"],input[type="date"],input[type="number"]{
+
+input[type="text"],
+input[type="time"],
+input[type="email"],
+input[type="date"],
+input[type="number"] {
     padding: 6px 10px;
     border-radius: 4px;
     border: 1px solid grey;
@@ -45,110 +56,133 @@ input[type="text"],input[type="time"],input[type="email"],input[type="date"],inp
     border: 1px solid #ccc;
     border-radius: 4px;
 }
-select{
+
+select {
     padding: 6px 10px;
     border-radius: 4px;
     border: 1px solid grey;
 }
-p{
+
+p {
     padding-top: 10px;
 }
-.btn-c{
+
+.btn-c {
     padding: 12px 12px;
     border: none;
-    background-color: rgb(1, 1, 61);;
+    background-color: rgb(1, 1, 61);
+    ;
     margin-left: 10px;
     color: white;
 }
-.form-container{
-    display: flex;
 
+.form-container {
+    display: flex;
+    width: 100%;
+    color: white;
 }
-.form-group-header{
+
+.form-group-header {
     padding: 6px;
     display: flex;
     flex-direction: column;
 }
-.form-group-header input[type="date"],input[type="number"],input[type="email"]{
-   width: 70%;
-   background-color: white;
-    border-radius: 4px;
-    border: 1px solid grey;
-    box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
-    border: 1px solid #ccc;
-    border-radius: 4px;
+
+
+
+.form-group-header input[type="text"],
+input[type="date"],
+input[type="number"] {
+    width: 80%;
+    height: 1.5rem;
 }
-.btn{
+
+.btn {
     border: none;
     background-color: rgb(249, 65, 65) !important;
-    padding: 7px 22px;
-    margin-top: 20px;
+    padding: 12px 22px;
+    margin-top: 15px;
     border-radius: 4px;
     color: white;
 }
-.SearchContainer{
-    
+
+.SearchContainer {
+
     display: flex;
     width: 100%;
     min-height: 75vh !important;
     margin: 50px 0px;
 
 }
-.searchLeft{
+
+.searchLeft {
     margin-top: 100px;
     width: 10%;
 }
-.searchRight{
+
+.searchRight {
     width: 90%;
 }
-.HotelCard{
+
+.HotelCard {
     background-color: white;
-   display: flex;
-   margin-top: 100px;
+    display: flex;
+    margin-top: 100px;
     width: 70%;
- box-shadow: 1px 1px 1px 1px rgb(194, 193, 193);;
-   
+    box-shadow: 1px 1px 1px 1px rgb(194, 193, 193);
+    ;
+
 }
-.discription{
+
+.discription {
     color: sandybrown;
     font-size: 12px;
 }
-.Facility{
+
+.Facility {
     display: flex;
     width: 80%;
-    align-content:space-between;
+    align-content: space-between;
 }
-.left{
+
+.left {
     width: 50%;
     margin-left: 14px;
 }
-.right{
+
+.right {
     width: 50%;
 }
-.hotelName{
+
+.hotelName {
     font-weight: bold;
     font-size: 18px;
 }
-.HotelCard img{
+
+.HotelCard img {
     width: 35%;
-  border-top-right-radius: 70%;
+    border-top-right-radius: 70%;
 }
-.HotelDescription{
+
+.HotelDescription {
     width: 50%;
 }
-.HotelPrice{
+
+.HotelPrice {
     width: 15%;
     display: flex;
     flex-direction: column;
     align-items: center;
     border-left: 1px solid grey;
 }
-.HotelPrice p{
+
+.HotelPrice p {
     font-size: 20px;
     font-weight: bold;
     color: black;
 }
-.HotelPrice span{
+
+.HotelPrice span {
     background-color: rgb(180, 7, 7);
     padding: 8px 17px;
     border-radius: 4px;
@@ -157,48 +191,62 @@ p{
     margin-top: 10px;
 }
 
-.HeaderDetails{
+.HeaderDetails {
     background-repeat: no-repeat;
-    background-size:cover
+    background-size: cover
 }
 
-.textarea{
+.textarea {
     width: 100px;
 }
-.ask{
+
+.ask {
     font-size: 14px;
-    padding: 6px;
+    padding: 6px 0;
+    color:#616161
 }
-.ClassRoom{
+.time-date input{
+width: 8rem;
+margin: 1rem 1rem 1rem 0;
+}
+
+.ClassRoom {
     display: flex;
     flex-direction: row;
     width: 100%;
 }
-.form-step{
-    width: 60%;
+
+.form-step {
+    width: 100%;
 }
-.selectRoom{
-    margin-top: 37px;
-    width: 40%;
+
+.selectRoom {
+    margin-top: 20px;
+    
     /* height: 30vh; */
 }
-.amount{
+
+.amount {
     font-size: 20px;
     padding: 10px;
     font-weight: bold;
     color: rgba(153, 15, 15, 0.5);
 }
-label{
+
+label {
     padding: 20px 0px;
 }
-.room{
+
+.room {
     display: flex;
     flex-direction: column;
 }
-.fromDate{
+
+.fromDate {
     display: flex;
 }
-.address{
+
+.address {
     display: flex;
     flex-direction: column;
 }
@@ -385,11 +433,13 @@ label{
     width: 100%;
     top: 40%;
 }
+
 .texttodisplaypayme {
     text-align: center;
     width: 100%;
     background: #7acddf;
 }
+
 .form-container-card .field-container-card:first-of-type {
     grid-area: name;
 }
@@ -420,7 +470,7 @@ label{
     grid-column-gap: 10px;
     grid-template-columns: auto auto;
     grid-template-rows: 90px 90px 90px;
-    grid-template-areas: "name name""number number""expiration security";
+    grid-template-areas: "name name" "number number" "expiration security";
     /* max-width: 400px; */
     padding: 20px;
     color: #707070;
@@ -710,4 +760,34 @@ label {
 .creditcard.flipped {
     -webkit-transform: rotateY(180deg);
     transform: rotateY(180deg);
+}
+
+
+@media only screen and (max-width: 960px) {
+    .form-container {
+        flex-direction: column !important;
+        text-align: left;
+    }
+
+    .form-group-header {
+        padding: 0;
+
+    }
+
+    .form-group-header input[type="text"],
+    input[type="date"],
+    input[type="number"] {
+        width: auto;
+    }
+    .ClassRoom,.selectRoom{
+        width: 90%;
+        margin-left: 1.5rem;
+    }
+    .form-names{
+        display: flex;
+        flex-direction: column;
+    }
+    .group-email .form-group{
+        width: 100%;
+    }
 }

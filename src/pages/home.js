@@ -11,7 +11,6 @@ export default function Home() {
       <TopNavbar />
       <Header />
       <Popular />
- <script>alert("hello")</script>
       <Footer />
     </>
   );
