@@ -23,13 +23,13 @@ export default function Contact() {
             </Link>
             <Link className="address" to="home" smooth={true} offset={-80}>
       
-              <h4 className="font15 extraBold whiteColor" style={{ marginLeft: "15px" }}>
+              <h4 className="font15  whiteColor" style={{ marginLeft: "15px" }}>
                 kk 366 st, Kigali
               </h4>
-              <h4 className="font15 extraBold whiteColor" style={{ marginLeft: "15px" }}>
+              <h4 className="font15  whiteColor" style={{ marginLeft: "15px" }}>
                 godiscoverafrica20@gmail.com
               </h4>
-              <h4 className="font15 extraBold whiteColor" style={{ marginLeft: "15px" }}>
+              <h4 className="font15  whiteColor" style={{ marginLeft: "15px" }}>
                 +250781325077, +250791349744, +250785601720
               </h4>
             </Link>
@@ -37,9 +37,7 @@ export default function Contact() {
               © {getCurrentYear()} - <span className="purpleColor font13">GODISCOVER AFRICA LTD</span> All Right Reserved
             </StyleP>
 
-            <Link className="whiteColor animate pointer font13" to="home" smooth={true} offset={-80}>
-              Back to top
-            </Link>
+            
           </InnerWrapper>
         </div>
       </div>

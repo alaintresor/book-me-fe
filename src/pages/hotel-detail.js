@@ -102,7 +102,7 @@ function HotelDetail() {
                                                 {room.availableRooms}
                                             </td>
                                             <td className='data'>
-                                                {room.roomCost}
+                                                {room.roomCost}$
                                             </td>
                                             <td className='data' align='right'>
                                                 <button onClick={() => navigate(`/checkout/${room.roomType}/${hotel.id}`)}>Book</button>
