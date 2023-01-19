@@ -297,6 +297,26 @@ label {
     line-height: 1.428571429;
     border-radius: 15px;
 }
+.slider {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s;
+  }
+
+  .active {
+    opacity: 1;
+  }
 
 .intl-tel-input.allow-dropdown {
     width: 100% !important;

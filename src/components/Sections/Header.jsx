@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
-import HeaderImage from "../../assets/img/2000.jpg";
+import HeaderImage from "../../assets/img/1.png";
+import HeaderImage1 from "../../assets/img/2.png";
+import HeaderImage2 from "../../assets/img/3.png";
 
 
 export default function Header() {
@@ -12,16 +14,19 @@ export default function Header() {
   const [room, setRoom] = useState('')
   const [adult, setAdult] = useState('')
   const [child, setChild] = useState('')
+
+
+
+
   const handleSubmit = (e) => {
     navigate(`/search/${place}/${arrival}/${departure}/${room}/${adult}/${child}`)
     e.preventDefault()
-    console.log(place)
+    // console.log(place)
 
   }
   return (
     <>
-      <Wrapper style={{ background: `url('${HeaderImage}')`, backgroundSize: "cover", backgroundRepeat: "no-repeat", width: "100%" }}>
-
+      <Wrapper id="wrapperHeader" style={{ background: `url('${HeaderImage}')`, backgroundSize: "cover", backgroundRepeat: "no-repeat", width: "100%" }}>
         <div className='container-fluid'>
           <center>
             <FormHome>
@@ -69,8 +74,9 @@ export default function Header() {
 const FormHome = styled.section`
   padding: 60px;
   z-index: 9;
-  opacity: 0.8;
+  opacity: 1.5;
   background:#990f0f80;
+
   z-index:9px;
   width: 80%;
   border-radius:15px;
@@ -84,9 +90,11 @@ const FormHome = styled.section`
 `;
 
 const Wrapper = styled.section`
+  -webkit-transition: background-image 0.5s ease-in-out;
+transition: background-image 0.3s ease-in-out;
   padding-top: 80px;
   width: 100%;
-  min-height: 400px;
+  min-height: 400px;  
   @media (max-width: 960px) {
     flex-direction: column;
   }

@@ -31,6 +31,17 @@
       data-complete="completeCallback"
     ></script>
     <script>
+        window.onload = function() {
+    var image=document.getElementById("wrapperHeader");
+    var img_array=['%PUBLIC_URL%/2.png','%PUBLIC_URL%/3.png','%PUBLIC_URL%/1.png'];
+    var index=0;
+    var interval = 3000;
+    function slide() {
+      console.log(image.style.background)
+      image.style.background = `url('${img_array[index++%img_array.length]}')`;
+    }
+    setInterval(slide, interval);
+  }
         // console.log(Checkout)
   function errorCallback(error) {
     console.log(JSON.stringify(error));
