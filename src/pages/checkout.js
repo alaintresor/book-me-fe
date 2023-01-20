@@ -129,7 +129,7 @@ function CheckOut() {
     var step2 = document.getElementById('step2');
     var step3 = document.getElementById('step3');
     // step1.style.background = "#990f0f80"
-   
+
 
   }
   const hideThird = (e) => {
@@ -178,7 +178,6 @@ function CheckOut() {
       country,
       phone: tel,
       eventId: event,
-      promotionCode: promo,
       paymentMethod: paymentOption,
       roomType,
       accomodationId: hotelId,
@@ -187,9 +186,8 @@ function CheckOut() {
       roomNumber:rooms,
       arriveTime,
       question,
-      dayNumber: dayNumber
-
-
+      dayNumber: dayNumber,
+      roomNumber: rooms
     }
     axios
       .post(`https://bookme.up.railway.app/api/v1/book`, {
