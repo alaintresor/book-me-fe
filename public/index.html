@@ -48,7 +48,9 @@
     // Handles callback when a there's an error during a transaction while on the checkout page.
   }
   function cancelCallback() {
+    const book = JSON.parse(localStorage.getItem('book'))
     console.log("Payment cancelled");
+    console.log(book);
     // Handles callback when a client cancels a transaction while on the checkout page.
   }
   function completeCallback(resultIndicator,sessionVersion) {
