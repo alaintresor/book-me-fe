@@ -184,6 +184,7 @@ function CheckOut() {
       accomodationId: hotelId,
       purpose,
       arriveDate,
+      roomNumber:rooms,
       arriveTime,
       question,
       dayNumber: dayNumber
@@ -196,8 +197,12 @@ function CheckOut() {
       })
       .then((res) => {
         const amount = roomMain?.room?.roomCost * rooms * dayNumber;
-        localStorage.setItem('book',res.data)
-        // console.log(res)
+        localStorage.setItem('book',JSON.stringify(res.data))
+        localStorage.setItem('hotel',JSON.stringify(hotel))
+        localStorage.setItem('room',JSON.stringify(roomMain))
+        localStorage.setItem('orderNumber',JSON.stringify(`${uid}`))
+        
+        console.log(res)
         // console.log(res)
         var data1 = JSON.stringify({
           "amount": `${amount}`
@@ -247,7 +252,7 @@ function CheckOut() {
             console.log(error);
           });
 
-        setOpen(true)
+        // setOpen(true)
         setIsSubmit(false)
 
         // Swal.fire({
@@ -286,7 +291,7 @@ function CheckOut() {
 
       <TopNavbar />
       <Banner hotel={hotel} />
-      <ConfirmDialog title={"Thank for Booking with us!"} children={`Thank you for booking ${hotel.name} with Go Discover Africa, a leading event organizing and tour company in Rwanda. We are pleased to confirm that your reservation has been received and is being processed. Your booking will be confirmed after review within the with in 2 hours.\n waiting to pay to get receipt or pay later at hotel.`} open={open} setOpen={setOpen} />
+      {/* <ConfirmDialog id="comfirmDialog" title={"Thank for Booking with us!"} children={`Thank you for booking ${hotel.name} with Go Discover Africa, a leading event organizing and tour company in Rwanda. We are pleased to confirm that your reservation has been received and is being processed. Your booking will be confirmed after review within the with in 2 hours.\n waiting to pay to get receipt or pay later at hotel.`} open={open} setOpen={setOpen} /> */}
       <br></br>
       <div className='container'>
         <div className='stepper'>

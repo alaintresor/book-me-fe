@@ -1,21 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/logo.jpg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo.jpg" />
-    <!--
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/logo.jpg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="Web site created using create-react-app" />
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo.jpg" />
+  <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
       Only files inside the `public` folder can be referenced from the HTML.
@@ -24,48 +22,175 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <script
-      src="https://ap-gateway.mastercard.com/checkout/version/61/checkout.js"
-      data-error="errorCallback"
-      data-cancel="cancelCallback"
-      data-complete="completeCallback"
-    ></script>
-    <script>
-        window.onload = function() {
-    var image=document.getElementById("wrapperHeader");
-    var img_array=['%PUBLIC_URL%/2.png','%PUBLIC_URL%/3.png','%PUBLIC_URL%/1.png'];
-    var index=0;
-    var interval = 3000;
-    function slide() {
-      console.log(image.style.background)
-      image.style.background = `url('${img_array[index++%img_array.length]}')`;
+
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+  <script src="https://ap-gateway.mastercard.com/checkout/version/61/checkout.js" data-error="errorCallback"
+    data-cancel="cancelCallback" data-complete="completeCallback"></script>
+  <script>
+
+   
+    window.onload = function () {
+      var image = document.getElementById("wrapperHeader");
+      var img_array = ['%PUBLIC_URL%/2.png', '%PUBLIC_URL%/3.png', '%PUBLIC_URL%/1.png'];
+      var index = 0;
+      var interval = 3000;
+      function slide() {
+        console.log(image.style.background)
+        image.style.background = `url('${img_array[index++ % img_array.length]}')`;
+      }
+      setInterval(slide, interval);
     }
-    setInterval(slide, interval);
-  }
-        // console.log(Checkout)
-  function errorCallback(error) {
-    console.log(JSON.stringify(error));
-    // Handles callback when a there's an error during a transaction while on the checkout page.
-  }
-  function cancelCallback() {
-    const book = JSON.parse(localStorage.getItem('book'))
-    console.log("Payment cancelled");
-    console.log(book);
-    // Handles callback when a client cancels a transaction while on the checkout page.
-  }
-  function completeCallback(resultIndicator,sessionVersion) {
-            console.log(sessionVersion);
-            console.log(resultIndicator);
-            // compaire the resultIndicator to successIndicator value, should be similar for a successful transaction.
-            // you can redirect your client to a success page at this point
-  }
-    </script>
-    <title>BookMe</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
+    // console.log(Checkout)
+    function errorCallback(error) {
+      console.log(JSON.stringify(error));
+      // Handles callback when a there's an error during a transaction while on the checkout page.
+      const book = JSON.parse(localStorage.getItem('book'))
+      console.log(book.data.newBooking.id);
+      var myheaders = new Headers()
+      myheaders.append("Content-Type", "application/json");
+      var raw = JSON.stringify({
+        "id": book.data.newBooking.id,
+        "status": "PaymentFailed"
+      });
+      const requestOptions = {
+        method: 'PUT',
+        redirect: 'follow',
+        headers: myheaders,
+        body: raw,
+        redirect: 'follow'
+      }
+
+
+
+      fetch("https://bookme.up.railway.app/api/v1/book/update", requestOptions)
+        .then(response => response.json())
+        .then(result => {
+          console.log(result)
+          // location.href = '../viewArticle.html'
+
+        })
+    }
+    function cancelCallback() {
+      const element = document.getElementById('comfirmDialog');
+      const book = JSON.parse(localStorage.getItem('book'))
+      const paymentInfo = JSON.parse(localStorage.getItem('payment'))
+      const room = JSON.parse(localStorage.getItem('room'))
+      const order = JSON.parse(localStorage.getItem('orderNumber'))
+      console.log(book.data.newBooking.id);
+      var myheaders = new Headers()
+      myheaders.append("Content-Type", "application/json");
+      var raw = JSON.stringify({
+        "id": book.data.newBooking.id,
+        "status": "PaymentSuccessFull"
+      });
+      const requestOptions = {
+        method: 'PUT',
+        redirect: 'follow',
+        headers: myheaders,
+        body: raw,
+        redirect: 'follow'
+      }
+
+
+
+      fetch("https://bookme.up.railway.app/api/v1/book/update", requestOptions)
+        .then(response => response.json())
+        .then(result => {
+          console.log(result)
+          // location.href = '../viewArticle.html'
+      
+
+
+        })
+    }
+    function completeCallback(resultIndicator, sessionVersion) {
+      console.log(sessionVersion);
+      console.log(resultIndicator);
+      const book = JSON.parse(localStorage.getItem('book'))
+      const hotel = JSON.parse(localStorage.getItem('hotel'))
+      const room = JSON.parse(localStorage.getItem('room'))
+      const order = JSON.parse(localStorage.getItem('orderNumber'))
+      console.log(book.data.newBooking.id);
+      var myheaders = new Headers()
+      myheaders.append("Content-Type", "application/json");
+      var raw = JSON.stringify({
+        "id": book.data.newBooking.id,
+        "status": "PaymentSuccessFull"
+      });
+      const requestOptions = {
+        method: 'PUT',
+        redirect: 'follow',
+        headers: myheaders,
+        body: raw,
+        redirect: 'follow'
+      }
+
+
+
+      fetch("https://bookme.up.railway.app/api/v1/book/update", requestOptions)
+        .then(response => response.json())
+        .then(result => {
+          console.log(result)
+          // location.href = '../viewArticle.html'
+          var header = new Headers()
+          header.append("Content-Type", "application/json");
+          var rawPayment = JSON.stringify({
+            "roomId": parseInt(`${room.room.id}`),
+            "bookId": parseInt(`${book.data.newBooking.id}`),
+            "orderNo": `${order}`,
+            "email": `${book.data.newBooking.id}`,
+            "roomNumber": `${book.data.newBooking.id}`,
+            "amount": `${paymentInfo.amount}`,
+            "status": "Payment Successfully"
+          });
+          const requestOption = {
+            method: 'POST',
+            redirect: 'follow',
+            headers: header,
+            body: rawPayment,
+            redirect: 'follow'
+          }
+
+          fetch("https://bookme.up.railway.app/api/v1/payment/pay", requestOption)
+            .then(response => response.json())
+            .then(result => {
+              console.log(result)
+
+              document.getElementById("modalContent").innerHTML = `Thank you for booking ${hotel.name} with Go Discover Africa, a leading event organizing and tour company in Rwanda. We are pleased to confirm that your reservation has been received and is being processed. Your booking will be confirmed after review within the with in 2 hours.`
+              $(function () {
+                $("#dialog").appendTo('body').modal();
+              });
+
+            })
+
+
+        })
+    }
+  </script>
+  <style>
+    #dialog {
+      background: white;
+      border: 2px solid grey;
+      padding: 10px;
+      height: 20vh;
+      width: 50%;
+    }
+  </style>
+  <title>BookMe</title>
+</head>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="dialog" style="display: none;" title="SuccessFull">
+
+    <p id="modalContent"></p>
+  </div>
+
+  <div id="root"></div>
+  <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
 
@@ -75,5 +200,6 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-  </body>
+</body>
+
 </html>
