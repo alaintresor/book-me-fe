@@ -51,18 +51,16 @@ export default function Search() {
   return (
     <>
       <TopNavbar />
-      <div className="SearchContainer" >
+      <div className="SearchContainer container" >
         <div className="searchLeft">
 
         </div>
         <div className="searchRight">
-          <div className="">
             {hotels && hotels.map((item) => (
 
               <HotelSearchCard hotel={item} />
             )
             )}
-          </div>
         </div>
       </div>
       <Footer />

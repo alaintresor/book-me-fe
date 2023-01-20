@@ -5,9 +5,9 @@ const HotelSearchCard = ({hotel}) => {
     const navigate = useNavigate()
   return (
     <>
-      <div className="HotelCard">
+      <div className="HotelCard ">
         
-        <img src={HotelImage} className="HotelImage" alt="image"/>
+        <img src={hotel.accomodation.image} className="HotelImage" alt="image"/>
         <div className='HotelDescription'>
        <p className='hotelName'>{hotel.accomodation.name}</p>
        <p className='discription'>{hotel.accomodation.description}</p>
@@ -33,10 +33,8 @@ const HotelSearchCard = ({hotel}) => {
         </div>
         <div className='HotelPrice'>
             <br></br>
-            <p>from</p>
-            <h2>$ 180</h2>
-            <p>/ night</p>
-           <span style={{cursor:"pointer"}} onClick={(e)=>navigate(`/hotel-detail/${hotel.accomodation.id}`)}>See pricing</span>
+            <div className='price'><span>from</span> <h2>$ 180</h2> <span>/ night</span> </div>
+           <span className='btn' onClick={(e)=>navigate(`/hotel-detail/${hotel.accomodation.id}`)}>See pricing</span>
         </div>
       </div>
     </>

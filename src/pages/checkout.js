@@ -701,7 +701,7 @@ function CheckOut() {
                         <br />
                         <p><input checked type="radio" name="purpose" value={"Personal reason"} onChange={(e) => setPurpose(e.target.value)} /> Personal reason</p>
                         <p><input type="radio" name="purpose" value={"I am attending an event"} onChange={(e) => setPurpose(e.target.value)} /> I am attending an event </p>
-                        <p><input type="radio" name="purpose" value={"Personal reason but i have a promotion code"} onChange={(e) => setPurpose(e.target.value)} /> Personal reason but i have a promotion code </p>
+                        {/* <p><input type="radio" name="purpose" value={"Personal reason but i have a promotion code"} onChange={(e) => setPurpose(e.target.value)} /> Personal reason but i have a promotion code </p> */}
 
 
                         <br></br>
@@ -724,11 +724,11 @@ function CheckOut() {
                             </select>
 
                           </div>
-                          <div className='form-group'>
+                          {/* <div className='form-group'>
                             <label>Your promotion code <span>(optional)</span></label>
                             <input value={promo} onChange={(e) => setPromo(e.target.value)} type="text" placeholder='promo code.' className='form-control' />
 
-                          </div>
+                          </div> */}
 
                         </div>
                         <br />
