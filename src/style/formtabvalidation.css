@@ -2,6 +2,10 @@
     display: flex;
 }
 
+.required {
+    color: red;
+}
+
 .step-one {
     width: 30%;
     padding: 20px;
@@ -27,6 +31,7 @@
     display: flex;
     width: 100%;
 }
+
 .group-email {
     width: 100%;
 }
@@ -56,11 +61,21 @@ input[type="number"] {
     height: 1.5rem;
 }
 
+
+select,
+textarea,
+input:focus {
+    outline: none !important;
+}
+
 select {
     padding: 10px 10px;
     border-radius: 4px;
     border: 1px solid grey;
-    
+    box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+    border: 1px solid #ccc;
+    border-radius: 4px;
+
 }
 
 p {
@@ -87,6 +102,7 @@ p {
     display: flex;
     flex-direction: column;
 }
+
 .form-group-header input[type="text"],
 input[type="date"],
 input[type="number"] {
@@ -124,8 +140,8 @@ input[type="number"] {
 .HotelCard {
     background-color: white;
     display: flex;
-    margin-top: 100px;
-    width: 70%;
+    margin: 5rem 0;
+    width: 100%;
     box-shadow: 1px 1px 1px 1px rgb(194, 193, 193);
     ;
 
@@ -179,12 +195,13 @@ input[type="number"] {
     color: black;
 }
 
-.HotelPrice span {
+.HotelPrice .btn {
     background-color: rgb(180, 7, 7);
     padding: 8px 17px;
     border-radius: 4px;
     font-size: 13px;
     color: white;
+    cursor: pointer;
     margin-top: 10px;
 }
 
@@ -200,11 +217,12 @@ input[type="number"] {
 .ask {
     font-size: 14px;
     padding: 6px 0;
-    color:#616161
+    color: #616161
 }
-.time-date input{
-width: 8rem;
-margin: 1rem 1rem 1rem 0;
+
+.time-date input {
+    width: 8rem;
+    margin: 1rem 1rem 1rem 0;
 }
 
 .ClassRoom {
@@ -219,9 +237,10 @@ margin: 1rem 1rem 1rem 0;
 
 .selectRoom {
     margin-top: 20px;
-    
+
     /* height: 30vh; */
 }
+
 .amount {
     font-size: 20px;
     padding: 10px;
@@ -236,6 +255,10 @@ label {
 .room {
     display: flex;
     flex-direction: column;
+}
+
+.room input {
+    width: 90% !important;
 }
 
 .fromDate {
@@ -297,14 +320,15 @@ label {
     line-height: 1.428571429;
     border-radius: 15px;
 }
+
 .slider {
     position: relative;
     width: 100%;
     height: 100vh;
     overflow: hidden;
-  }
+}
 
-  .slide {
+.slide {
     position: absolute;
     top: 0;
     left: 0;
@@ -312,11 +336,11 @@ label {
     height: 100%;
     opacity: 0;
     transition: opacity 1s;
-  }
+}
 
-  .active {
+.active {
     opacity: 1;
-  }
+}
 
 .intl-tel-input.allow-dropdown {
     width: 100% !important;
@@ -778,7 +802,7 @@ label {
     transform: rotateY(180deg);
 }
 
-.hiden{
+.hiden {
     display: none;
 }
 
@@ -799,24 +823,54 @@ label {
     input[type="number"] {
         width: auto;
     }
-    .ClassRoom,.selectRoom{
+
+    .ClassRoom,
+    .selectRoom {
         width: 90%;
         margin-left: 1.5rem;
     }
-    .form-names{
+
+    .form-names {
         display: flex;
         flex-direction: column;
     }
-    .group-email .form-group{
-        width: 100%;
+
+    .group-email {
+        width: 100% !important;
     }
-    .hiden{
+
+    .room input {
+        width: 90% !important;
+    }
+
+    .hiden {
         display: block;
     }
-    .show{
+
+    .show {
         display: none;
     }
-    .selectRoom{
+
+    .selectRoom {
         margin: 0;
+    }
+
+    .HotelCard {
+        flex-direction: column;
+    }
+
+    .HotelCard img {
+        width: 100%;
+        border-top-right-radius: 0;
+    }
+
+    .HotelDescription {
+        width: 100%;
+        padding: 0 1rem;
+    }
+
+    .HotelPrice .price {
+        display: flex;
+        
     }
 }
