@@ -262,12 +262,12 @@ function CheckOut() {
         setOpen(true)
         setIsSubmit(false)
 
-        Swal.fire({
-          title: 'Thank for Booking with us!',
-          text: 'Your request sent successfull',
-          icon: 'success',
-          confirmButtonText: 'ok'
-        })
+        // Swal.fire({
+        //   title: 'Thank for Booking with us!',
+        //   text: `Thank you for booking ${hotel.name} with Go Discover Africa, a leading event organizing and tour company in Rwanda. We are pleased to confirm that your reservation has been received and is being processed. Your booking will be confirmed after review within the with in 2 hours.\n waiting to pay to get receipt or pay later at hotel.`,
+        //   icon: 'success',
+        //   confirmButtonText: 'ok'
+        // })
       })
       .catch((err) => {
         console.log(err)
@@ -298,7 +298,7 @@ function CheckOut() {
 
       <TopNavbar />
       <Banner hotel={hotel} />
-      <ConfirmDialog title={"booking confirmation"} children={`Thank you for booking ${hotel.name} with Go Discover Africa, a leading event organizing and tour company in Rwanda. We are pleased to confirm that your reservation has been received and is being processed. Your booking will be confirmed after review within the with in 2 hours.\n waiting to pay to get receipt or pay later at hotel.`} open={open} setOpen={setOpen} />
+      <ConfirmDialog title={"Thank for Booking with us!"} children={`Thank you for booking ${hotel.name} with Go Discover Africa, a leading event organizing and tour company in Rwanda. We are pleased to confirm that your reservation has been received and is being processed. Your booking will be confirmed after review within the with in 2 hours.\n waiting to pay to get receipt or pay later at hotel.`} open={open} setOpen={setOpen} />
       <br></br>
       <div className='container'>
         <div className='stepper'>
@@ -701,7 +701,7 @@ function CheckOut() {
                         <br />
                         <p><input checked type="radio" name="purpose" value={"Personal reason"} onChange={(e) => setPurpose(e.target.value)} /> Personal reason</p>
                         <p><input type="radio" name="purpose" value={"I am attending an event"} onChange={(e) => setPurpose(e.target.value)} /> I am attending an event </p>
-                        <p><input type="radio" name="purpose" value={"Personal reason but i have a promotion code"} onChange={(e) => setPurpose(e.target.value)} /> Personal reason but i have a promotion code </p>
+                        {/* <p><input type="radio" name="purpose" value={"Personal reason but i have a promotion code"} onChange={(e) => setPurpose(e.target.value)} /> Personal reason but i have a promotion code </p> */}
 
 
                         <br></br>
@@ -724,11 +724,11 @@ function CheckOut() {
                             </select>
 
                           </div>
-                          <div className='form-group'>
+                          {/* <div className='form-group'>
                             <label>Your promotion code <span>(optional)</span></label>
                             <input value={promo} onChange={(e) => setPromo(e.target.value)} type="text" placeholder='promo code.' className='form-control' />
 
-                          </div>
+                          </div> */}
 
                         </div>
                         <br />

@@ -1,7 +1,8 @@
 .stepper {
     display: flex;
 }
-.required{
+
+.required {
     color: red;
 }
 
@@ -139,8 +140,8 @@ input[type="number"] {
 .HotelCard {
     background-color: white;
     display: flex;
-    margin-top: 100px;
-    width: 70%;
+    margin: 5rem 0;
+    width: 100%;
     box-shadow: 1px 1px 1px 1px rgb(194, 193, 193);
     ;
 
@@ -194,12 +195,13 @@ input[type="number"] {
     color: black;
 }
 
-.HotelPrice span {
+.HotelPrice .btn {
     background-color: rgb(180, 7, 7);
     padding: 8px 17px;
     border-radius: 4px;
     font-size: 13px;
     color: white;
+    cursor: pointer;
     margin-top: 10px;
 }
 
@@ -254,6 +256,7 @@ label {
     display: flex;
     flex-direction: column;
 }
+
 .room input {
     width: 90% !important;
 }
@@ -832,9 +835,10 @@ label {
         flex-direction: column;
     }
 
-    .group-email  {
+    .group-email {
         width: 100% !important;
     }
+
     .room input {
         width: 90% !important;
     }
@@ -849,5 +853,24 @@ label {
 
     .selectRoom {
         margin: 0;
+    }
+
+    .HotelCard {
+        flex-direction: column;
+    }
+
+    .HotelCard img {
+        width: 100%;
+        border-top-right-radius: 0;
+    }
+
+    .HotelDescription {
+        width: 100%;
+        padding: 0 1rem;
+    }
+
+    .HotelPrice .price {
+        display: flex;
+        
     }
 }
